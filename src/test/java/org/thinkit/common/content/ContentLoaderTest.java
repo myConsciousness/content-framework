@@ -12,7 +12,6 @@
 
 package org.thinkit.common.content;
 
-import org.thinkit.common.Key;
 import org.thinkit.common.rule.Attribute;
 import org.thinkit.common.rule.Condition;
 

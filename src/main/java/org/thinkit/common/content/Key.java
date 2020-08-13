@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common;
+package org.thinkit.common.content;
 
 /**
  * コンテンツのキーに関する汎用的な処理を定義したインターフェースです。<br>
@@ -22,7 +22,7 @@ package org.thinkit.common;
  * @since 1.0
  * @version 1.0
  */
-public interface Key {
+interface Key {
 
     /**
      * キーの文字列表現を返却します。

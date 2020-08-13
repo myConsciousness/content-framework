@@ -14,8 +14,6 @@
 
 package org.thinkit.common.content;
 
-import org.thinkit.common.Key;
-
 import lombok.RequiredArgsConstructor;
 
 /**

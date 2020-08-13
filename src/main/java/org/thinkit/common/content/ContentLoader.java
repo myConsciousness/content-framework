@@ -25,7 +25,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.thinkit.common.Key;
 import org.thinkit.common.catalog.Delimiter;
 import org.thinkit.common.catalog.Extension;
 import org.thinkit.common.util.json.JsonConverter;
