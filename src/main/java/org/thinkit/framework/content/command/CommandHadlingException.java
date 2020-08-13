@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.command;
+package org.thinkit.framework.content.command;
 
 /**
  * Thrown to indicate that an incorrect operation or incorrect value has been

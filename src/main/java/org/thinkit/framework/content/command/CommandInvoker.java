@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.command;
+package org.thinkit.framework.content.command;
 
 import org.thinkit.common.Invokable;
 
