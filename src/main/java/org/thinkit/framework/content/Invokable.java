@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common;
+package org.thinkit.framework.content;
 
 /**
  * 呼び出し可能なオブジェクトを抽象化したインターフェースです。

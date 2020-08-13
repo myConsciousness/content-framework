@@ -14,7 +14,7 @@
 
 package org.thinkit.framework.content.rule;
 
-import org.thinkit.common.Invokable;
+import org.thinkit.framework.content.Invokable;
 
 import lombok.NonNull;
 
