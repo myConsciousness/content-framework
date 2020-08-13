@@ -53,7 +53,7 @@ public final class ContentTest {
         テストコンテンツ;
 
         @Override
-        public String getString() {
+        public String getPath() {
             return this.name();
         }
     }
@@ -77,7 +77,7 @@ public final class ContentTest {
      */
     @Test
     public void testGetStringInEnglish() {
-        assertEquals(EXPECTED_ENGLISH_SEQUENCE, TestContent.TEST_CONTENT.getString());
+        assertEquals(EXPECTED_ENGLISH_SEQUENCE, TestContent.TEST_CONTENT.getPath());
     }
 
     /**
@@ -99,6 +99,6 @@ public final class ContentTest {
      */
     @Test
     public void testGetStringInJapanese() {
-        assertEquals(EXPECTED_JAPANAESE_SEQUENCE, TestContent.テストコンテンツ.getString());
+        assertEquals(EXPECTED_JAPANAESE_SEQUENCE, TestContent.テストコンテンツ.getPath());
     }
 }

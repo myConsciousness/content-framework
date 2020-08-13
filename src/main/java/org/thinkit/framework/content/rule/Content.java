@@ -25,9 +25,9 @@ package org.thinkit.framework.content.rule;
 public interface Content {
 
     /**
-     * Enum要素の文字列表現を返却します。
+     * コンテンツファイルまでの相対パスを返却します。
      *
-     * @return Enum要素の文字列表現。
+     * @return コンテンツファイルまでの相対パス
      */
-    public String getString();
+    public String getPath();
 }

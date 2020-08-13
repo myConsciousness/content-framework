@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.thinkit.common.Precondition;
 import org.thinkit.framework.content.ContentLoader;
 
 import lombok.NonNull;
@@ -88,12 +89,9 @@ public interface Rule<R> {
         final List<Attribute> attributes = this.getAttributes();
         final Map<Condition, String> conditions = this.getConditions();
 
-        if (attributes == null || attributes.isEmpty()) {
-            throw new RuleHandlingException(
-                    "Attribute is required. Check the implementation of the getAttributes() method.");
-        }
+        Precondition.requireNonNull(attributes);
 
-        final List<Map<String, String>> contents = ContentLoader.load(content.getString(),
+        final List<Map<String, String>> contents = ContentLoader.load(content.getPath(),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
                 conditions == null ? new HashMap<>(0)
                         : conditions.entrySet().stream()

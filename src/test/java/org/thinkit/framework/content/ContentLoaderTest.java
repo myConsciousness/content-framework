@@ -95,7 +95,7 @@ public final class ContentLoaderTest {
         public void testSmallSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(TestContentName.SMALL_SELECTION_NODES.getString(), TEST_ATTRIBUTE_LIST);
+                    .load(TestContentName.SMALL_SELECTION_NODES.getPath(), TEST_ATTRIBUTE_LIST);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -136,7 +136,7 @@ public final class ContentLoaderTest {
         public void testMediumSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(TestContentName.MEDIUM_SELECTION_NODES.getString(), TEST_ATTRIBUTE_LIST);
+                    .load(TestContentName.MEDIUM_SELECTION_NODES.getPath(), TEST_ATTRIBUTE_LIST);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -177,7 +177,7 @@ public final class ContentLoaderTest {
         public void testLargeSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(TestContentName.LARGE_SELECTION_NODES.getString(), TEST_ATTRIBUTE_LIST);
+                    .load(TestContentName.LARGE_SELECTION_NODES.getPath(), TEST_ATTRIBUTE_LIST);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -301,7 +301,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition2.getString(), "0");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.SMALL_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.SMALL_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -347,7 +347,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition2.getString(), "");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.SMALL_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.SMALL_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -391,7 +391,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition2.getString(), "");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.SMALL_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.SMALL_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -451,7 +451,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition4.getString(), "テスト");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -501,7 +501,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition4.getString(), "true");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -549,7 +549,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition4.getString(), "テスト");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -613,7 +613,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.LARGE_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.LARGE_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -667,7 +667,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.LARGE_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.LARGE_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -719,7 +719,7 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
                 final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getString(), attributes, conditions);
+                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -962,7 +962,7 @@ public final class ContentLoaderTest {
         @Test
         public void testSimplePattern() {
             final Map<String, Object> content = new FluentReflection<Map<String, Object>>(ContentLoader.class)
-                    .add(String.class, TestContentName.DEFAULT.getString()).invokeStatic("getContent");
+                    .add(String.class, TestContentName.DEFAULT.getPath()).invokeStatic("getContent");
 
             assertNotNull(content);
             assertTrue(!content.isEmpty());
@@ -1006,7 +1006,7 @@ public final class ContentLoaderTest {
             final String expectedFormatFilePath = "%s/src/main/resources/content/%s%s";
 
             final FluentReflection<String> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(String.class, TestContentName.PRODUCTION.getString());
+            reflection.add(String.class, TestContentName.PRODUCTION.getPath());
             final String actualFormatFilePath = reflection.invokeStatic("getFormatFilePath");
 
             assertNotNull(actualFormatFilePath);
@@ -1039,7 +1039,7 @@ public final class ContentLoaderTest {
             final String expectedFormatFilePath = "%s/src/test/resources/content/%s%s";
 
             final FluentReflection<String> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(String.class, TestContentName.DEFAULT.getString());
+            reflection.add(String.class, TestContentName.DEFAULT.getPath());
             final String actualFormatFilePath = reflection.invokeStatic("getFormatFilePath");
 
             assertNotNull(actualFormatFilePath);
@@ -1643,7 +1643,7 @@ public final class ContentLoaderTest {
         }
 
         @Override
-        public String getString() {
+        public String getPath() {
             return this.contentName.name();
         }
     }
