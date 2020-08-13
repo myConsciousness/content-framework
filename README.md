@@ -1,6 +1,6 @@
-# dev-utils
+# Content Framework
 
-Development utils main repository.
+Content Framework main repository.
 
 # License
 
