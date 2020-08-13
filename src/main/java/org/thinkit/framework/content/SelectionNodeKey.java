@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.content;
+package org.thinkit.framework.content;
 
 import lombok.RequiredArgsConstructor;
 

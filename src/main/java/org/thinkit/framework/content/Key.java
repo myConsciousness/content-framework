@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.content;
+package org.thinkit.framework.content;
 
 /**
  * コンテンツのキーに関する汎用的な処理を定義したインターフェースです。<br>
