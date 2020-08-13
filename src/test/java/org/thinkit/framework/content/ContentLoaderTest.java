@@ -10,10 +10,10 @@
  * reproduced or used in any manner whatsoever.
  */
 
-package org.thinkit.common.content;
+package org.thinkit.framework.content;
 
-import org.thinkit.common.rule.Attribute;
-import org.thinkit.common.rule.Condition;
+import org.thinkit.framework.content.rule.Attribute;
+import org.thinkit.framework.content.rule.Condition;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -28,7 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.thinkit.common.rule.Content;
+import org.thinkit.framework.content.rule.Content;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
