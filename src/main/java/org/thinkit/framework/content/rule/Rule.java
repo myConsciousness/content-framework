@@ -90,6 +90,7 @@ public interface Rule<R> {
         final Map<Condition, String> conditions = this.getConditions();
 
         Precondition.requireNonNull(attributes);
+        Precondition.requireNonEmpty(attributes);
 
         final List<Map<String, String>> contents = ContentLoader.load(content.getPath(),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
