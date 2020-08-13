@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.rule;
+package org.thinkit.framework.content.rule;
 
 /**
  * 条件のEnum定数で必須となる処理を定義したインターフェースです。</br>

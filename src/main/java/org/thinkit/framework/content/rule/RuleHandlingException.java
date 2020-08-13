@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.common.rule;
+package org.thinkit.framework.content.rule;
 
 /**
  * Thrown to indicate that an incorrect operation or incorrect value has been
