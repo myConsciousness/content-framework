@@ -30,16 +30,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 
-    compile group: 'com.google.flogger', name: 'flogger', version: '0.4'
-    runtime group: 'com.google.flogger', name: 'flogger-system-backend', version: '0.4'
-
-    compile 'commons-io:commons-io:2.4'
     compile 'org.apache.commons:commons-lang3:3.4'
-
-    compile group: 'org.apache.poi', name : 'poi', version: '4.1.2'
-	compile(group: 'org.apache.poi', name : 'poi-ooxml', version: '4.1.2') {
-		exclude group: 'stax', module: 'stax-api'
-	}
 
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
@@ -47,6 +38,8 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    compile fileTree(dir: 'libs', include: '*.jar')
 }
 
 test {
