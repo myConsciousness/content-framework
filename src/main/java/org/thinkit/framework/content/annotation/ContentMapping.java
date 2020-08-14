@@ -19,8 +19,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.thinkit.framework.content.ContentResource;
-
 /**
  * 使用するコンテンツファイルへのマッピングを行うアノテーションです。
  *
@@ -33,12 +31,9 @@ import org.thinkit.framework.content.ContentResource;
 public @interface ContentMapping {
 
     /**
-     * {@link ContentResource} インターフェースを実装したEnumクラスを設定します。
-     * <p>
-     * 設定するEnum要素は使用するコンテンツファイルまでの相対パスが {@link ContentResource#getPath()}
-     * メソッドで取得できるように実装されている必要があります。
+     * コンテンツファイルまでの相対パスを指定します。
      *
      * @return コンテンツ
      */
-    Class<? extends Enum<? extends ContentResource>> content();
+    String content();
 }
