@@ -14,6 +14,8 @@
 
 package org.thinkit.framework.content;
 
+import org.thinkit.framework.content.entity.ContentEntity;
+
 import lombok.NonNull;
 
 /**
@@ -23,7 +25,7 @@ import lombok.NonNull;
  * @since 1.0
  * @version 1.0
  */
-public final class ContentInvoker<R> implements Invokable<R> {
+public final class ContentInvoker<R extends ContentEntity> implements Invokable<R> {
 
     /**
      * ルール
@@ -56,8 +58,8 @@ public final class ContentInvoker<R> implements Invokable<R> {
      *
      * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    public static <R> ContentInvoker<R> of(@NonNull Content<R> Content) {
-        return new ContentInvoker<>(Content);
+    public static <R extends ContentEntity> ContentInvoker<R> of(@NonNull Content<R> content) {
+        return new ContentInvoker<>(content);
     }
 
     @Override

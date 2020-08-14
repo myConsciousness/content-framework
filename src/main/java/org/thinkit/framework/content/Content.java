@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.thinkit.common.Precondition;
+import org.thinkit.framework.content.entity.ContentEntity;
 
 import lombok.NonNull;
 
@@ -42,7 +43,7 @@ import lombok.NonNull;
  * @since 1.0
  * @version 1.0
  */
-public interface Content<R> {
+public interface Content<R extends ContentEntity> {
 
     /**
      * コンテンツファイルに定義されているアトリビュート名を格納したリストを返却します。
