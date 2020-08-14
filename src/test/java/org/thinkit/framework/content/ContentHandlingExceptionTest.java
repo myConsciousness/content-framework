@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.framework.content.rule;
+package org.thinkit.framework.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

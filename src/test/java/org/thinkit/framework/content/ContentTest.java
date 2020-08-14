@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.framework.content.rule;
+package org.thinkit.framework.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
  * @since 1.0
  * @version 1.0
  */
-public final class ContentTest implements Content<String> {
+public final class ContentTest implements Content<ContentEntityForTest> {
 
     /**
      * <pre>
@@ -48,13 +48,13 @@ public final class ContentTest implements Content<String> {
      */
     @Test
     public void testExecute() {
-        assertEquals("test", this.execute());
+        assertEquals("test", this.execute().getTest());
     }
 
     @Override
-    public String execute() {
+    public ContentEntityForTest execute() {
         // do nothing
-        return "test";
+        return new ContentEntityForTest();
     }
 
     @Override
