@@ -22,7 +22,7 @@ package org.thinkit.framework.content.rule;
  * @since 1.0
  * @version 1.0
  */
-public interface Content {
+public interface ContentResource {
 
     /**
      * コンテンツファイルまでの相対パスを返却します。

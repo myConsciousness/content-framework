@@ -22,7 +22,7 @@ package org.thinkit.framework.content.rule;
  * @since 1.0
  * @version 1.0
  */
-final class RuleHandlingException extends RuntimeException {
+final class ContentHandlingException extends RuntimeException {
 
     /**
      * serialVersionUID
@@ -30,19 +30,19 @@ final class RuleHandlingException extends RuntimeException {
     private static final long serialVersionUID = 0L;
 
     /**
-     * Constructs an <code>RuleHandlingException</code> with no detail message.
+     * Constructs an <code>ContentHandlingException</code> with no detail message.
      */
-    public RuleHandlingException() {
+    public ContentHandlingException() {
         super();
     }
 
     /**
-     * Constructs an <code>RuleHandlingException</code> with the specified detail
+     * Constructs an <code>ContentHandlingException</code> with the specified detail
      * message.
      *
      * @param s the detail message.
      */
-    public RuleHandlingException(String s) {
+    public ContentHandlingException(String s) {
         super(s);
     }
 
@@ -60,7 +60,7 @@ final class RuleHandlingException extends RuntimeException {
      *                unknown.)
      * @since 1.0
      */
-    public RuleHandlingException(String message, Throwable cause) {
+    public ContentHandlingException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -77,7 +77,7 @@ final class RuleHandlingException extends RuntimeException {
      *              unknown.)
      * @since 1.0
      */
-    public RuleHandlingException(Throwable cause) {
+    public ContentHandlingException(Throwable cause) {
         super(cause);
     }
 }

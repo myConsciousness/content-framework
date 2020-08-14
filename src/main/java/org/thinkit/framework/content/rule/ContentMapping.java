@@ -31,11 +31,12 @@ import java.lang.annotation.Target;
 public @interface ContentMapping {
 
     /**
-     * {@link Content} インターフェースを実装したEnumクラスを設定します。
+     * {@link ContentResource} インターフェースを実装したEnumクラスを設定します。
      * <p>
-     * 設定するEnum要素は使用するコンテンツファイルまでの相対パスを持っている必要があります。
+     * 設定するEnum要素は使用するコンテンツファイルまでの相対パスが {@link ContentResource#getPath()}
+     * メソッドで取得できるように実装されている必要があります。
      *
      * @return コンテンツ
      */
-    Class<? extends Enum<? extends Content>> content();
+    Class<? extends Enum<? extends ContentResource>> content();
 }

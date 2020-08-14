@@ -25,15 +25,15 @@ import org.thinkit.framework.content.ContentLoader;
 import lombok.NonNull;
 
 /**
- * ルールを抽象化したインターフェースです。
+ * コンテンツを抽象化したインターフェースです。
  * <p>
- * {@link Rule} インターフェースを実装する際には総称型として {@link Rule#execute()}
+ * {@link Content} インターフェースを実装する際には総称型として {@link Content#execute()}
  * メソッドが返却する値の型を指定してください。
  *
  * <pre>
  * 使用例 (String型を返却する場合):
  * <code>
- * public class TestRule implements Rule&lt;String&gt; {
+ * public class TestContent implements Content&lt;String&gt; {
  *      // do something
  * }
  * </code>
@@ -43,7 +43,7 @@ import lombok.NonNull;
  * @since 1.0
  * @version 1.0
  */
-public interface Rule<R> {
+public interface Content<R> {
 
     /**
      * コンテンツファイルに定義されているアトリビュート名を格納したリストを返却します。
@@ -64,9 +64,9 @@ public interface Rule<R> {
 
     /**
      * ルールを実行します。<br>
-     * このメソッドは {@link Rule} インターフェースの宣言時に定義した総称型の値を返却します。
+     * このメソッドは {@link Content} インターフェースの宣言時に定義した総称型の値を返却します。
      *
-     * @return {@link Rule} インターフェースの宣言時に定義した総称型の値
+     * @return {@link Content} インターフェースの宣言時に定義した総称型の値
      */
     public R execute();
 
@@ -80,11 +80,11 @@ public interface Rule<R> {
      * @see #getConditions()
      *
      * @exception NullPointerException 引数として指定された {@code content} が {@code null} の場合
-     * @throws RuleHandlingException 実装された {@link #getAttributes()} メソッドの返却値が
-     *                               {@code null} の場合、または {@link #getAttributes()}
-     *                               メソッドの返却値が空リストの場合
+     * @throws ContentHandlingException 実装された {@link #getAttributes()} メソッドの返却値が
+     *                                  {@code null} の場合、または
+     *                                  {@link #getAttributes()} メソッドの返却値が空リストの場合
      */
-    default List<Map<String, String>> loadContent(@NonNull Content content) {
+    default List<Map<String, String>> loadContent(@NonNull ContentResource content) {
 
         final List<Attribute> attributes = this.getAttributes();
         final Map<Condition, String> conditions = this.getConditions();
@@ -99,7 +99,7 @@ public interface Rule<R> {
                                 .collect(Collectors.toMap(e -> e.getKey().getString(), e -> e.getValue())));
 
         if (contents.isEmpty()) {
-            throw new RuleHandlingException(
+            throw new ContentHandlingException(
                     "Could not get a value from the content. Please check the input information or implementation.");
         }
 

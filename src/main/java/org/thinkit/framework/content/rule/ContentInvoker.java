@@ -19,54 +19,55 @@ import org.thinkit.framework.content.Invokable;
 import lombok.NonNull;
 
 /**
- * {@link Rule} インターフェースを実装した具象ルールクラスの安全な呼び出しを行うルール起動クラスです。
+ * {@link Content} インターフェースを実装した具象ルールクラスの安全な呼び出しを行うルール起動クラスです。
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-public final class RuleInvoker<R> implements Invokable<R> {
+public final class ContentInvoker<R> implements Invokable<R> {
 
     /**
      * ルール
      */
-    private Rule<R> rule;
+    private Content<R> content;
 
     /**
      * デフォルトコンストラクタ
      */
-    private RuleInvoker() {
+    private ContentInvoker() {
     }
 
     /**
      * コンストラクタ
      *
-     * @param rule ルール
+     * @param content コンテンツ
      *
      * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    private RuleInvoker(@NonNull Rule<R> rule) {
-        this.rule = rule;
+    private ContentInvoker(@NonNull Content<R> content) {
+        this.content = content;
     }
 
     /**
-     * 引数として渡された {@code rule} オブジェクトを基に {@link RuleInvoker} クラスの新しいインスタンスを生成し返却します。
+     * 引数として渡された {@code Content} オブジェクトを基に {@link ContentInvoker}
+     * クラスの新しいインスタンスを生成し返却します。
      *
-     * @param rule ルール
-     * @return {@link RuleInvoker} クラスの新しいインスタンス
+     * @param content コンテンツ
+     * @return {@link ContentInvoker} クラスの新しいインスタンス
      *
      * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    public static <R> RuleInvoker<R> of(@NonNull Rule<R> rule) {
-        return new RuleInvoker<>(rule);
+    public static <R> ContentInvoker<R> of(@NonNull Content<R> Content) {
+        return new ContentInvoker<>(Content);
     }
 
     @Override
     public R invoke() {
         try {
-            return rule.execute();
+            return content.execute();
         } catch (Exception e) {
-            throw new RuleHandlingException(e);
+            throw new ContentHandlingException(e);
         }
     }
 }
