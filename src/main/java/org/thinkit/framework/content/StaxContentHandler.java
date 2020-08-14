@@ -47,7 +47,7 @@ import lombok.Cleanup;
  * @deprecated
  */
 @Deprecated
-public final class StaxContentHandler {
+final class StaxContentHandler {
 
     /**
      * コンテンツファイルの拡張子
