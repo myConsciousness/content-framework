@@ -33,7 +33,7 @@ import lombok.NonNull;
  * <pre>
  * 使用例 (String型を返却する場合):
  * <code>
- * public class TestContent implements Content&lt;String&gt; {
+ * public class TestContent implements Content&lt;Something&gt; {
  *      // do something
  * }
  * </code>
