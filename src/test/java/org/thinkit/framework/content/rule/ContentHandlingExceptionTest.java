@@ -22,23 +22,23 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 /**
- * {@link RuleHandlingException} クラスのテストクラスです。
+ * {@link ContentHandlingException} クラスのテストクラスです。
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-public final class RuleHandlingExceptionTest {
+public final class ContentHandlingExceptionTest {
 
     /**
      * <pre>
      * ❏ 概要
-     * {@link RuleHandlingException} クラスのデフォルトコンストラクタの機能を確認する。
+     * {@link ContentHandlingException} クラスのデフォルトコンストラクタの機能を確認する。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link RuleHandlingException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link ContentHandlingException} の生成されたインスタンスが {@code null} ではないこと。
      * </pre>
      *
      * <pre>
@@ -48,20 +48,20 @@ public final class RuleHandlingExceptionTest {
      */
     @Test
     public void testDefaultConstructor() {
-        assertNotNull(new RuleHandlingException());
+        assertNotNull(new ContentHandlingException());
     }
 
     /**
      * <pre>
      * ❏ 概要
-     * {@link RuleHandlingException} クラスのコンストラクタの機能を確認する。
+     * {@link ContentHandlingException} クラスのコンストラクタの機能を確認する。
      * インスタンス生成時には引数として任意の文字列を渡すこととする。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link RuleHandlingException} の生成されたインスタンスが {@code null} ではないこと。
-     * ・{@link RuleHandlingException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
+     * ・{@link ContentHandlingException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link ContentHandlingException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
      * </pre>
      *
      * <pre>
@@ -72,7 +72,7 @@ public final class RuleHandlingExceptionTest {
     @Test
     public void testConstructorWithMessage() {
         final String message = "This is a test message.";
-        final RuleHandlingException exception = new RuleHandlingException(message);
+        final ContentHandlingException exception = new ContentHandlingException(message);
 
         assertNotNull(exception);
         assertEquals(message, exception.getMessage());
@@ -81,15 +81,15 @@ public final class RuleHandlingExceptionTest {
     /**
      * <pre>
      * ❏ 概要
-     * {@link RuleHandlingException} クラスのコンストラクタの機能を確認する。
+     * {@link ContentHandlingException} クラスのコンストラクタの機能を確認する。
      * インスタンス生成時には引数として任意の文字列と例外情報を渡すこととする。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link RuleHandlingException} の生成されたインスタンスが {@code null} ではないこと。
-     * ・{@link RuleHandlingException#getCause()} の返却値が {@code null} ではないこと。
-     * ・{@link RuleHandlingException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
+     * ・{@link ContentHandlingException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link ContentHandlingException#getCause()} の返却値が {@code null} ではないこと。
+     * ・{@link ContentHandlingException#getMessage()} の返却値がインスタンス生成時に渡した文字列と等価であること。
      * </pre>
      *
      * <pre>
@@ -100,12 +100,12 @@ public final class RuleHandlingExceptionTest {
     @Test
     public void testConstructorWithMessageAndException() {
         final String message = "This is a test message.";
-        RuleHandlingException exception = null;
+        ContentHandlingException exception = null;
 
         try {
             new ArrayList<>(0).get(1);
         } catch (IndexOutOfBoundsException e) {
-            exception = new RuleHandlingException(message, e);
+            exception = new ContentHandlingException(message, e);
         }
 
         assertNotNull(exception);
@@ -116,14 +116,14 @@ public final class RuleHandlingExceptionTest {
     /**
      * <pre>
      * ❏ 概要
-     * {@link RuleHandlingException} クラスのコンストラクタの機能を確認する。
+     * {@link ContentHandlingException} クラスのコンストラクタの機能を確認する。
      * インスタンス生成時には引数として任意の例外情報を渡すこととする。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link RuleHandlingException} の生成されたインスタンスが {@code null} ではないこと。
-     * ・{@link RuleHandlingException#getCause()} の返却値が {@code null} ではないこと。
+     * ・{@link ContentHandlingException} の生成されたインスタンスが {@code null} ではないこと。
+     * ・{@link ContentHandlingException#getCause()} の返却値が {@code null} ではないこと。
      * </pre>
      *
      * <pre>
@@ -134,12 +134,12 @@ public final class RuleHandlingExceptionTest {
     @Test
     public void testConstructorWithException() {
 
-        RuleHandlingException exception = null;
+        ContentHandlingException exception = null;
 
         try {
             new ArrayList<>(0).get(1);
         } catch (IndexOutOfBoundsException e) {
-            exception = new RuleHandlingException(e);
+            exception = new ContentHandlingException(e);
         }
 
         assertNotNull(exception);

@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
  * @since 1.0
  * @version 1.0
  */
-public final class ContentTest {
+public final class ContentResourceTest {
 
     /**
      * 英名の期待値
@@ -40,7 +40,7 @@ public final class ContentTest {
     /**
      * テスト用の具象Enumクラスです。
      */
-    private enum TestContent implements Content {
+    private enum TestContent implements ContentResource {
 
         /**
          * テスト用コンテンツ要素 : 英名

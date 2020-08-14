@@ -22,23 +22,23 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 /**
- * {@link Rule} インターフェースのテストクラスです。
+ * {@link Content} インターフェースのテストクラスです。
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-public final class RuleTest implements Rule<String> {
+public final class ContentTest implements Content<String> {
 
     /**
      * <pre>
      * ❏ 概要
-     * {@link Rule} インターフェースの {@link Rule#execute()} メソッドの機能を確認する。
+     * {@link Content} インターフェースの {@link Content#execute()} メソッドの機能を確認する。
      * </pre>
      *
      * <pre>
      * ❏ 観点
-     * ・{@link Rule#execute()} の返却値が <code>"test"</code> であること
+     * ・{@link Content#execute()} の返却値が <code>"test"</code> であること
      * </pre>
      *
      * <pre>

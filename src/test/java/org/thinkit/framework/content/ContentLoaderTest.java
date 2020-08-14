@@ -30,7 +30,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.thinkit.framework.content.rule.Content;
+import org.thinkit.framework.content.rule.ContentResource;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -1577,7 +1577,7 @@ public final class ContentLoaderTest {
     /**
      * テスト用コンテンツ名クラス
      */
-    private enum TestContentName implements Content {
+    private enum TestContentName implements ContentResource {
 
         /**
          * 小規模選択ノードのテスト用コンテンツ
