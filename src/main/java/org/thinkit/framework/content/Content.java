@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.thinkit.common.Precondition;
+import org.thinkit.framework.content.annotation.ContentMapping;
 import org.thinkit.framework.content.entity.ContentEntity;
 
 import lombok.NonNull;
@@ -84,15 +85,17 @@ public interface Content<R extends ContentEntity> {
      *                                  {@code null} の場合、または
      *                                  {@link #getAttributes()} メソッドの返却値が空リストの場合
      */
-    default List<Map<String, String>> loadContent(@NonNull ContentResource content) {
+    default List<Map<String, String>> loadContent(@NonNull Class<? extends Content<R>> content) {
 
+        final ContentMapping mapping = content.getAnnotation(ContentMapping.class);
         final List<Attribute> attributes = this.getAttributes();
         final Map<Condition, String> conditions = this.getConditions();
 
+        Precondition.requireNonNull(mapping);
         Precondition.requireNonNull(attributes);
         Precondition.requireNonEmpty(attributes);
 
-        final List<Map<String, String>> contents = ContentLoader.load(content.getPath(),
+        final List<Map<String, String>> contents = ContentLoader.load(mapping.content(),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
                 conditions == null ? new HashMap<>(0)
                         : conditions.entrySet().stream()
