@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.framework.content.rule;
+package org.thinkit.framework.content;
 
 /**
  * アトリビュートを表現するEnum定数で必須となる処理を定義したインターフェースです。</br>

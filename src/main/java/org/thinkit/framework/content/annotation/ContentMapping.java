@@ -19,7 +19,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.thinkit.framework.content.rule.ContentResource;
+import org.thinkit.framework.content.ContentResource;
 
 /**
  * 使用するコンテンツファイルへのマッピングを行うアノテーションです。

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.framework.content.rule;
+package org.thinkit.framework.content;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.thinkit.common.Precondition;
-import org.thinkit.framework.content.ContentLoader;
 
 import lombok.NonNull;
 

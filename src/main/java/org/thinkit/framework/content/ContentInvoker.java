@@ -12,9 +12,7 @@
  * the License.
  */
 
-package org.thinkit.framework.content.rule;
-
-import org.thinkit.framework.content.Invokable;
+package org.thinkit.framework.content;
 
 import lombok.NonNull;
 
