@@ -12,62 +12,61 @@
  * the License.
  */
 
-package org.thinkit.framework.content.command;
+package org.thinkit.framework.content.rule;
 
 import org.thinkit.framework.content.Invokable;
 
 import lombok.NonNull;
 
 /**
- * {@link Command} インターフェースを実装した具象コマンドクラスの安全な呼び出しを行うコマンド起動クラスです。
+ * {@link Rule} インターフェースを実装した具象ルールクラスの安全な呼び出しを行うルール起動クラスです。
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  */
-public final class CommandInvoker<R> implements Invokable<R> {
+public final class RuleInvoker<R> implements Invokable<R> {
 
     /**
      * コマンド
      */
-    private Command<R> command;
+    private Rule<R> rule;
 
     /**
      * デフォルトコンストラクタ
      */
-    private CommandInvoker() {
+    private RuleInvoker() {
     }
 
     /**
      * コンストラクタ
      *
-     * @param command コマンド
+     * @param rule ルール
      *
      * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    private CommandInvoker(@NonNull Command<R> command) {
-        this.command = command;
+    private RuleInvoker(@NonNull Rule<R> rule) {
+        this.rule = rule;
     }
 
     /**
-     * 引数として指定された {@code command} オブジェクトを基に {@link CommandInvoker}
-     * クラスの新しいインスタンスを生成し返却します。
+     * 引数として指定された {@code Rule} オブジェクトを基に {@link RuleInvoker} クラスの新しいインスタンスを生成し返却します。
      *
-     * @param command コマンド
-     * @return {@link CommandInvoker} クラスの新しいインスタンス
+     * @param Rule コマンド
+     * @return {@link RuleInvoker} クラスの新しいインスタンス
      *
      * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    public static <R> CommandInvoker<R> of(@NonNull Command<R> command) {
-        return new CommandInvoker<>(command);
+    public static <R> RuleInvoker<R> of(@NonNull Rule<R> rule) {
+        return new RuleInvoker<>(rule);
     }
 
     @Override
     public R invoke() {
         try {
-            return command.run();
+            return rule.execute();
         } catch (Exception e) {
-            throw new CommandHandlingException(e);
+            throw new RuleHandlingException(e);
         }
     }
 }

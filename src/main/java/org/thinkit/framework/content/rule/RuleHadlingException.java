@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.framework.content.command;
+package org.thinkit.framework.content.rule;
 
 /**
  * Thrown to indicate that an incorrect operation or incorrect value has been
@@ -22,7 +22,7 @@ package org.thinkit.framework.content.command;
  * @since 1.0
  * @version 1.0
  */
-final class CommandHandlingException extends RuntimeException {
+final class RuleHandlingException extends RuntimeException {
 
     /**
      * serialVersionUID
@@ -30,19 +30,19 @@ final class CommandHandlingException extends RuntimeException {
     private static final long serialVersionUID = 0L;
 
     /**
-     * Constructs an <code>CommandHandlingException</code> with no detail message.
+     * Constructs an <code>RuleHandlingException</code> with no detail message.
      */
-    public CommandHandlingException() {
+    public RuleHandlingException() {
         super();
     }
 
     /**
-     * Constructs an <code>CommandHandlingException</code> with the specified detail
+     * Constructs an <code>RuleHandlingException</code> with the specified detail
      * message.
      *
      * @param s the detail message.
      */
-    public CommandHandlingException(String s) {
+    public RuleHandlingException(String s) {
         super(s);
     }
 
@@ -60,7 +60,7 @@ final class CommandHandlingException extends RuntimeException {
      *                unknown.)
      * @since 1.0
      */
-    public CommandHandlingException(String message, Throwable cause) {
+    public RuleHandlingException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -77,7 +77,7 @@ final class CommandHandlingException extends RuntimeException {
      *              unknown.)
      * @since 1.0
      */
-    public CommandHandlingException(Throwable cause) {
+    public RuleHandlingException(Throwable cause) {
         super(cause);
     }
 }

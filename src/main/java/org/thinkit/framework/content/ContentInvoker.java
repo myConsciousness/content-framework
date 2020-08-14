@@ -17,7 +17,7 @@ package org.thinkit.framework.content;
 import lombok.NonNull;
 
 /**
- * {@link Content} インターフェースを実装した具象ルールクラスの安全な呼び出しを行うルール起動クラスです。
+ * {@link Content} インターフェースを実装した具象コンテンツクラスの安全な呼び出しを行うコンテンツ起動クラスです。
  *
  * @author Kato Shinya
  * @since 1.0

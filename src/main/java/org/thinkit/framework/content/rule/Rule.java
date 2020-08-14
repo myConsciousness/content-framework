@@ -12,18 +12,17 @@
  * the License.
  */
 
-package org.thinkit.framework.content.command;
+package org.thinkit.framework.content.rule;
 
 /**
- * コマンドを抽象化したインターフェースです。
+ * コンテンツのルールを抽象化したインターフェースです。
  * <p>
- * {@link Command} インターフェースを実装する際には総称型として {@link Command#run()}
- * メソッドが返却する値の型を指定してください。
+ * {@link Rule} インターフェースを実装する際には総称型として {@link Rule#run()} メソッドが返却する値の型を指定してください。
  *
  * <pre>
  * 使用例 (String型を返却する場合):
  * <code>
- * public class TestCommand implements Command&lt;String&gt; {
+ * public class TestRule implements Rule&lt;String&gt; {
  *      // do something
  * }
  * </code>
@@ -33,13 +32,13 @@ package org.thinkit.framework.content.command;
  * @since 1.0
  * @version 1.0
  */
-public interface Command<R> {
+public interface Rule<R> {
 
     /**
-     * コマンドを実行します。<br>
-     * このメソッドは {@link Command} インターフェースの宣言時に定義した総称型の値を返却します。
+     * コンテンツのルールを実行します。<br>
+     * このメソッドは {@link Rule} インターフェースの宣言時に定義した総称型の値を返却します。
      *
-     * @return {@link Command} インターフェースの宣言時に定義した総称型の値
+     * @return {@link Rule} インターフェースの宣言時に定義した総称型の値
      */
-    public R run();
+    public R execute();
 }
