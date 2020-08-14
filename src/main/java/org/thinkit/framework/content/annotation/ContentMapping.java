@@ -12,12 +12,14 @@
  * the License.
  */
 
-package org.thinkit.framework.content.rule;
+package org.thinkit.framework.content.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import org.thinkit.framework.content.rule.ContentResource;
 
 /**
  * 使用するコンテンツファイルへのマッピングを行うアノテーションです。
