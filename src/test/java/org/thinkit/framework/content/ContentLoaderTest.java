@@ -14,8 +14,8 @@
 
 package org.thinkit.framework.content;
 
-import org.thinkit.framework.content.rule.Attribute;
-import org.thinkit.framework.content.rule.Condition;
+import org.thinkit.framework.content.Attribute;
+import org.thinkit.framework.content.Condition;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -30,7 +30,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.thinkit.framework.content.rule.ContentResource;
+import org.thinkit.framework.content.ContentResource;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
