@@ -74,7 +74,7 @@ public interface Content<R extends ContentEntity> {
     /**
      * 引数として渡されたコンテンツオブジェクトに紐づくコンテンツファイルを参照しロード処理を行います。
      *
-     * @param content コンテンツ名
+     * @param content コンテンツ
      * @return 引数として指定された {@code content} に紐づくコンテンツ情報を格納したマップ
      *
      * @see #getAttributes()
