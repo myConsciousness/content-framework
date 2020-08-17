@@ -45,8 +45,8 @@ repositories {
         name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/myConsciousness/dev-utils")
         credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-            password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+            username = "myConsciousness"
+            password = "e14b43ba8fbbd6a1a448ba761dbb93305126aba2"
         }
     }
 
