@@ -6,7 +6,7 @@
 
 `Content Framework` was designed and created with the goal of creating a large amount of code that is flexible enough to respond to changes in value and behavioral specifications in the source code.
 
-The content files used by `Content Framework` are JSON-based, intuitive and easy to read structures. Content files allow you to define options of values and conditions for retrieving options.
+The `content file` used by `Content Framework` are JSON-based, intuitive and easy to read structures. Content files allow you to define options of values and conditions for retrieving options.
 
 As a framework each procedure is designed to be easy to perform, and the implementation is optimized to be very light and fast.
 
