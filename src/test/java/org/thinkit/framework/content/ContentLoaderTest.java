@@ -982,7 +982,7 @@ public final class ContentLoaderTest {
          * ❏ 観点
          * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が {@code null} ではないこと
          * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が空文字列ではないこと
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が <code>"%s/src/main/resources/content/%s%s</code> であること
+         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が <code>"src/main/resources/content/%s%s</code> であること
          * </pre>
          *
          * <pre>
@@ -993,7 +993,7 @@ public final class ContentLoaderTest {
         @Test
         public void testFormatFilePathForProduction() {
 
-            final String expectedFormatFilePath = "%s/src/main/resources/content/%s%s";
+            final String expectedFormatFilePath = "src/main/resources/content/%s%s";
 
             final FluentReflection<String> reflection = new FluentReflection<>(ContentLoader.class);
             reflection.add(String.class, TestContentName.PRODUCTION.getPath());
@@ -1015,7 +1015,7 @@ public final class ContentLoaderTest {
          * ❏ 観点
          * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が {@code null} ではないこと
          * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が空文字列ではないこと
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が <code>"%s/src/test/resources/content/%s%s</code> であること
+         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が <code>"src/test/resources/content/%s%s</code> であること
          * </pre>
          *
          * <pre>
@@ -1026,7 +1026,7 @@ public final class ContentLoaderTest {
         @Test
         public void testFormatFilePathForTest() {
 
-            final String expectedFormatFilePath = "%s/src/test/resources/content/%s%s";
+            final String expectedFormatFilePath = "src/test/resources/content/%s%s";
 
             final FluentReflection<String> reflection = new FluentReflection<>(ContentLoader.class);
             reflection.add(String.class, TestContentName.DEFAULT.getPath());
