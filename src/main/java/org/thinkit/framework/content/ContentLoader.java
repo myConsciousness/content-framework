@@ -25,6 +25,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
+import org.thinkit.common.Precondition;
 import org.thinkit.common.catalog.Delimiter;
 import org.thinkit.common.catalog.Extension;
 import org.thinkit.common.util.json.JsonConverter;
@@ -108,14 +109,8 @@ final class ContentLoader {
      */
     public static List<Map<String, String>> load(@NonNull final String contentName,
             @NonNull final List<String> attributes) {
-
-        if (StringUtils.isBlank(contentName)) {
-            throw new IllegalArgumentException("wrong parameter was given. Content name is required.");
-        }
-
-        if (attributes.isEmpty()) {
-            throw new IllegalArgumentException("wrong parameter was given. Attribute is required.");
-        }
+        Precondition.requireNonBlank(contentName);
+        Precondition.requireNonEmpty(attributes);
 
         return load(contentName, attributes, new HashMap<>(0));
     }
@@ -150,14 +145,8 @@ final class ContentLoader {
      */
     public static List<Map<String, String>> load(@NonNull final String contentName, @NonNull List<String> attributes,
             @NonNull final Map<String, String> conditions) {
-
-        if (StringUtils.isBlank(contentName)) {
-            throw new IllegalArgumentException("wrong parameter was given. Content name is required.");
-        }
-
-        if (attributes.isEmpty()) {
-            throw new IllegalArgumentException("wrong parameter was given. Attribute is required.");
-        }
+        Precondition.requireNonBlank(contentName);
+        Precondition.requireNonEmpty(attributes);
 
         final Map<String, Object> rawContent = getContent(contentName);
         final List<Map<String, Object>> conditionNodes = getNodeList(rawContent, ConditionNodeKey.CONDITION_NODES);

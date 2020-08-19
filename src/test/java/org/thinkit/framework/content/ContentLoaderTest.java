@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.thinkit.common.exception.IllegalListFoundException;
+import org.thinkit.common.exception.IllegalSequenceFoundException;
 import org.thinkit.common.util.reflection.FluentReflection;
 
 import java.util.ArrayList;
@@ -195,8 +197,7 @@ public final class ContentLoaderTest {
          *
          * <pre>
          * ❏ 観点
-         * ・例外として {@link IllegalArgumentException} が発生すること
-         * ・例外発生時のメッセージが <code>"wrong parameter was given. Content name is required."</code> であること
+         * ・例外として {@link IllegalSequenceFoundException} が発生すること
          * </pre>
          *
          * <pre>
@@ -206,10 +207,9 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWhenContentNameIsEmpty() {
-            final Throwable exception = assertThrows(IllegalArgumentException.class,
+            final Throwable exception = assertThrows(IllegalSequenceFoundException.class,
                     () -> ContentLoader.load("", new ArrayList<>(0)));
             assertNotNull(exception);
-            assertEquals("wrong parameter was given. Content name is required.", exception.getMessage());
         }
 
         /**
@@ -220,8 +220,7 @@ public final class ContentLoaderTest {
          *
          * <pre>
          * ❏ 観点
-         * ・例外として {@link IllegalArgumentException} が発生すること
-         * ・例外発生時のメッセージが <code>"wrong parameter was given. Attribute is required."</code> であること
+         * ・例外として {@link IllegalListFoundException} が発生すること
          * </pre>
          *
          * <pre>
@@ -231,10 +230,9 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWhenAttributeListIsEmpty() {
-            final Throwable exception = assertThrows(IllegalArgumentException.class,
+            final Throwable exception = assertThrows(IllegalListFoundException.class,
                     () -> ContentLoader.load("test", new ArrayList<>(0)));
             assertNotNull(exception);
-            assertEquals("wrong parameter was given. Attribute is required.", exception.getMessage());
         }
     }
 
@@ -730,8 +728,7 @@ public final class ContentLoaderTest {
          *
          * <pre>
          * ❏ 観点
-         * ・例外として {@link IllegalArgumentException} が発生すること
-         * ・例外発生時のメッセージが <code>"wrong parameter was given. Content name is required."</code> であること
+         * ・例外として {@link IllegalSequenceFoundException} が発生すること
          * </pre>
          *
          * <pre>
@@ -741,10 +738,9 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWhenContentNameIsEmpty() {
-            final Throwable exception = assertThrows(IllegalArgumentException.class,
+            final Throwable exception = assertThrows(IllegalSequenceFoundException.class,
                     () -> ContentLoader.load("", new ArrayList<>(0), new HashMap<>(0)));
             assertNotNull(exception);
-            assertEquals("wrong parameter was given. Content name is required.", exception.getMessage());
         }
 
         /**
@@ -755,8 +751,7 @@ public final class ContentLoaderTest {
          *
          * <pre>
          * ❏ 観点
-         * ・例外として {@link IllegalArgumentException} が発生すること
-         * ・例外発生時のメッセージが <code>"wrong parameter was given. Attribute is required."</code> であること
+         * ・例外として {@link IllegalListFoundException} が発生すること
          * </pre>
          *
          * <pre>
@@ -766,10 +761,9 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWhenAttributeListIsEmpty() {
-            final Throwable exception = assertThrows(IllegalArgumentException.class,
+            final Throwable exception = assertThrows(IllegalListFoundException.class,
                     () -> ContentLoader.load("test", new ArrayList<>(0), new HashMap<>(0)));
             assertNotNull(exception);
-            assertEquals("wrong parameter was given. Attribute is required.", exception.getMessage());
         }
     }
 
