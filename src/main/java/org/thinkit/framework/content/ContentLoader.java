@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.thinkit.common.Precondition;
+import org.thinkit.common.catalog.Delimiter;
 import org.thinkit.common.catalog.Extension;
 import org.thinkit.common.util.json.JsonConverter;
 
@@ -61,12 +62,12 @@ final class ContentLoader {
     /**
      * コンテンツファイルへのパス（本番）
      */
-    private static final String FORMAT_FILE_PATH_TO_CONTENT = "src/main/resources/content/%s%s";
+    private static final String FORMAT_FILE_PATH_TO_CONTENT = "%s/src/main/resources/content/%s%s";
 
     /**
      * コンテンツファイルへのパス（テスト）
      */
-    private static final String FORMAT_FILE_PATH_TO_TEST_CONTENT = "src/test/resources/content/%s%s";
+    private static final String FORMAT_FILE_PATH_TO_TEST_CONTENT = "%s/src/test/resources/content/%s%s";
 
     /**
      * テスト用コンテンツの接頭辞
@@ -228,7 +229,10 @@ final class ContentLoader {
      */
     private static Map<String, Object> getContent(@NonNull final String contentName) {
 
-        final File file = Paths.get(String.format(getFormatFilePath(contentName), contentName, Extension.json()))
+        final String currentDirectory = new File(Delimiter.period()).getAbsoluteFile().getParent();
+
+        final File file = Paths
+                .get(String.format(getFormatFilePath(contentName), currentDirectory, contentName, Extension.json()))
                 .toFile();
 
         return JsonConverter.toLinkedHashMap(JsonConverter.toJsonString(file));
