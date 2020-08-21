@@ -1,7 +1,6 @@
 ---
 name: Feature Request
 about: Request for new features to be added
-title: enhancement_XXX
 labels: "enhancement"
 assignees: "myConsciousness"
 ---
