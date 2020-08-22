@@ -100,7 +100,8 @@ public interface Content<R extends ContentEntity> {
         Precondition.requireNonNull(attributes);
         Precondition.requireNonEmpty(attributes);
 
-        try (InputStream is = content.getResourceAsStream(String.format("%s.%s", mapping.content(), Extension.json()));
+        try (InputStream is = content.getClassLoader()
+                .getResourceAsStream(String.format("%s.%s", mapping.content(), Extension.json()));
                 BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             System.out.println(br.readLine());
         } catch (IOException e) {
