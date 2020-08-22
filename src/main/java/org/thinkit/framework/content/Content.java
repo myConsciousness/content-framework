@@ -14,7 +14,10 @@
 
 package org.thinkit.framework.content;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,13 +102,11 @@ public interface Content<R extends ContentEntity> {
 
         final String resourceName = String.format("%s%s", mapping.content(), Extension.json());
 
-        System.out.println(String.format("resource name -> %s", resourceName));
-        System.out.println(content.getClassLoader().getResource(resourceName).toString());
-
-        try {
-            System.out.println(content.getClassLoader().getResources(resourceName));
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        try (InputStream is = content.getClassLoader().getResourceAsStream(resourceName);
+                BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+            System.out.println(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         final List<Map<String, String>> contents = ContentLoader.load(mapping.content(),
