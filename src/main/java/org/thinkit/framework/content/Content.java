@@ -97,8 +97,11 @@ public interface Content<R extends ContentEntity> {
         Precondition.requireNonNull(attributes);
         Precondition.requireNonEmpty(attributes);
 
-        final String resourceName = String.format("%s.%s", mapping.content(), Extension.json());
+        final String resourceName = String.format("%s%s", mapping.content(), Extension.json());
+
+        System.out.println(String.format("resource name -> %s", resourceName));
         System.out.println(content.getClassLoader().getResource(resourceName).toString());
+
         try {
             System.out.println(content.getClassLoader().getResources(resourceName));
         } catch (IOException e1) {
