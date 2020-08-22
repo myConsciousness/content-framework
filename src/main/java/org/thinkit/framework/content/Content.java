@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.thinkit.common.Precondition;
+import org.thinkit.framework.classlocation.ClassLocation;
 import org.thinkit.framework.content.annotation.ContentMapping;
 import org.thinkit.framework.content.entity.ContentEntity;
 
@@ -94,6 +95,9 @@ public interface Content<R extends ContentEntity> {
         Precondition.requireNonNull(mapping);
         Precondition.requireNonNull(attributes);
         Precondition.requireNonEmpty(attributes);
+
+        System.out.println(ClassLocation.of(content).toUrl().toString());
+        System.out.println(ClassLocation.of(content).toFile().toString());
 
         final List<Map<String, String>> contents = ContentLoader.load(mapping.content(),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
