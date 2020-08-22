@@ -14,6 +14,10 @@
 
 package org.thinkit.framework.content;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,6 +98,13 @@ public interface Content<R extends ContentEntity> {
         Precondition.requireNonNull(mapping);
         Precondition.requireNonNull(attributes);
         Precondition.requireNonEmpty(attributes);
+
+        try (InputStream is = content.getResourceAsStream(mapping.content());
+                BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+            System.out.println(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         final List<Map<String, String>> contents = ContentLoader.load(mapping.content(),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
