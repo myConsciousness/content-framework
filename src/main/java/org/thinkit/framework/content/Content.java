@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 import org.thinkit.common.Precondition;
 import org.thinkit.common.catalog.Extension;
 import org.thinkit.framework.content.annotation.ContentMapping;
+import org.thinkit.framework.content.catalog.ContentRoot;
 import org.thinkit.framework.content.entity.ContentEntity;
 
 import lombok.NonNull;
@@ -97,7 +98,7 @@ public interface Content<R extends ContentEntity> {
         Precondition.requireNonEmpty(attributes);
 
         final List<Map<String, String>> contents = ContentLoader.load(
-                content.getClassLoader().getResourceAsStream(mapping.content() + Extension.json()),
+                content.getClassLoader().getResourceAsStream(ContentRoot.root() + mapping.content() + Extension.json()),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
                 conditions == null ? new HashMap<>(0)
                         : conditions.entrySet().stream()
