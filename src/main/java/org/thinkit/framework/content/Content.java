@@ -14,10 +14,6 @@
 
 package org.thinkit.framework.content;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,16 +96,8 @@ public interface Content<R extends ContentEntity> {
         Precondition.requireNonNull(attributes);
         Precondition.requireNonEmpty(attributes);
 
-        final String resourceName = String.format("%s%s", mapping.content(), Extension.json());
-
-        try (InputStream is = content.getClassLoader().getResourceAsStream(resourceName);
-                BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-            System.out.println(br.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        final List<Map<String, String>> contents = ContentLoader.load(mapping.content(),
+        final List<Map<String, String>> contents = ContentLoader.load(
+                content.getClassLoader().getResourceAsStream(mapping.content() + Extension.json()),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
                 conditions == null ? new HashMap<>(0)
                         : conditions.entrySet().stream()

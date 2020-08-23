@@ -14,8 +14,11 @@
 
 package org.thinkit.framework.content;
 
-import java.io.File;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +29,6 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.thinkit.common.Precondition;
-import org.thinkit.common.catalog.Delimiter;
-import org.thinkit.common.catalog.Extension;
 import org.thinkit.common.util.json.JsonConverter;
 
 import lombok.NonNull;
@@ -58,21 +59,6 @@ import lombok.NonNull;
  * @see #load(String, List, Map)
  */
 final class ContentLoader {
-
-    /**
-     * コンテンツファイルへのパス（本番）
-     */
-    private static final String FORMAT_FILE_PATH_TO_CONTENT = "%s/src/main/resources/content/%s%s";
-
-    /**
-     * コンテンツファイルへのパス（テスト）
-     */
-    private static final String FORMAT_FILE_PATH_TO_TEST_CONTENT = "%s/src/test/resources/content/%s%s";
-
-    /**
-     * テスト用コンテンツの接頭辞
-     */
-    private static final String TEST_CONTENT_PREFIX = "test";
 
     /**
      * デフォルトコンストラクタ
@@ -107,12 +93,11 @@ final class ContentLoader {
      * @exception NullPointerException 引数として{@code null}が渡された場合
      * @throws IllegalArgumentException コンテンツ名が空文字列、またはアトリビュートリストが空の場合
      */
-    public static List<Map<String, String>> load(@NonNull final String contentName,
+    public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
             @NonNull final List<String> attributes) {
-        Precondition.requireNonBlank(contentName);
         Precondition.requireNonEmpty(attributes);
 
-        return load(contentName, attributes, new HashMap<>(0));
+        return load(contentStream, attributes, new HashMap<>(0));
     }
 
     /**
@@ -143,12 +128,11 @@ final class ContentLoader {
      * @exception NullPointerException 引数として{@code null}が渡された場合
      * @throws IllegalArgumentException コンテンツ名が空文字列、またはアトリビュートリストが空の場合
      */
-    public static List<Map<String, String>> load(@NonNull final String contentName, @NonNull List<String> attributes,
-            @NonNull final Map<String, String> conditions) {
-        Precondition.requireNonBlank(contentName);
+    public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
+            @NonNull List<String> attributes, @NonNull final Map<String, String> conditions) {
         Precondition.requireNonEmpty(attributes);
 
-        final Map<String, Object> rawContent = getContent(contentName);
+        final Map<String, Object> rawContent = getContent(contentStream);
         final List<Map<String, Object>> conditionNodes = getNodeList(rawContent, ConditionNodeKey.CONDITION_NODES);
 
         final List<String> conditionIdList = conditionNodes.isEmpty() ? new ArrayList<>(0)
@@ -227,30 +211,21 @@ final class ContentLoader {
      *
      * @exception NullPointerException 引数として{@code null}が渡された場合
      */
-    private static Map<String, Object> getContent(@NonNull final String contentName) {
+    private static Map<String, Object> getContent(@NonNull final InputStream contentStream) {
 
-        final String currentDirectory = new File(Delimiter.period()).getAbsoluteFile().getParent();
+        StringBuilder sb = new StringBuilder();
 
-        final File file = Paths
-                .get(String.format(getFormatFilePath(contentName), currentDirectory, contentName, Extension.json()))
-                .toFile();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(contentStream, StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        return JsonConverter.toLinkedHashMap(JsonConverter.toJsonString(file));
-    }
-
-    /**
-     * コンテンツ名からコンテンツファイルへのパスのフォーマットを判定し返却します。<br>
-     * コンテンツ名が <code>"test"</code> で始まる場合はテスト用のコンテンツ定義へのパスを返却します。<br>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
-     *
-     * @param contentName コンテンツ名
-     * @return コンテンツファイルへのパスのフォーマット
-     *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
-     */
-    private static String getFormatFilePath(@NonNull String contentName) {
-        return contentName.startsWith(TEST_CONTENT_PREFIX) ? FORMAT_FILE_PATH_TO_TEST_CONTENT
-                : FORMAT_FILE_PATH_TO_CONTENT;
+        System.out.println("Content -> " + sb.toString());
+        return JsonConverter.toLinkedHashMap(sb.toString());
     }
 
     /**
