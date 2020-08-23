@@ -76,7 +76,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    implementation 'org.thinkit.common:dev-utils:v1.0-3-g00a1cf4'
+    implementation 'org.thinkit.common:dev-utils:v1.0.0-5-g7db55aa'
 }
 
 test {
