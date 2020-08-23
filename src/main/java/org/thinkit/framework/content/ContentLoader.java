@@ -14,11 +14,7 @@
 
 package org.thinkit.framework.content;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +26,7 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.thinkit.common.Precondition;
 import org.thinkit.common.util.json.JsonConverter;
+import org.thinkit.common.util.FluentStreamReader;
 
 import lombok.NonNull;
 
@@ -212,19 +209,7 @@ final class ContentLoader {
      * @exception NullPointerException 引数として{@code null}が渡された場合
      */
     private static Map<String, Object> getContent(@NonNull final InputStream contentStream) {
-
-        StringBuilder sb = new StringBuilder();
-
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(contentStream, StandardCharsets.UTF_8))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return JsonConverter.toLinkedHashMap(sb.toString());
+        return JsonConverter.toLinkedHashMap(FluentStreamReader.of(contentStream).toString());
     }
 
     /**
