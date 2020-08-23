@@ -19,10 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.thinkit.common.catalog.Extension;
 import org.thinkit.common.exception.IllegalListFoundException;
-import org.thinkit.common.exception.IllegalSequenceFoundException;
 import org.thinkit.common.util.reflection.FluentReflection;
+import org.thinkit.framework.content.catalog.ContentRoot;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -93,7 +95,7 @@ public final class ContentLoaderTest {
         public void testSmallSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(TestContentName.SMALL_SELECTION_NODES.getPath(), TEST_ATTRIBUTE_LIST);
+                    .load(getResourceAsStream(TestContentName.SMALL_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_LIST);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -134,7 +136,7 @@ public final class ContentLoaderTest {
         public void testMediumSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(TestContentName.MEDIUM_SELECTION_NODES.getPath(), TEST_ATTRIBUTE_LIST);
+                    .load(getResourceAsStream(TestContentName.MEDIUM_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_LIST);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -175,7 +177,7 @@ public final class ContentLoaderTest {
         public void testLargeSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(TestContentName.LARGE_SELECTION_NODES.getPath(), TEST_ATTRIBUTE_LIST);
+                    .load(getResourceAsStream(TestContentName.LARGE_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_LIST);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -187,29 +189,6 @@ public final class ContentLoaderTest {
                 assertEquals("1.0", content.get(TestContentAttribute.test4.getString()));
                 assertEquals("test", content.get(TestContentAttribute.test5.getString()));
             }
-        }
-
-        /**
-         * <pre>
-         * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List)} メソッドの引数として空のコンテンツ名が渡された際の機能を確認する。
-         * </pre>
-         *
-         * <pre>
-         * ❏ 観点
-         * ・例外として {@link IllegalSequenceFoundException} が発生すること
-         * </pre>
-         *
-         * <pre>
-         * ❏ 留意点
-         * なし
-         * </pre>
-         */
-        @Test
-        public void testWhenContentNameIsEmpty() {
-            final Throwable exception = assertThrows(IllegalSequenceFoundException.class,
-                    () -> ContentLoader.load("", new ArrayList<>(0)));
-            assertNotNull(exception);
         }
 
         /**
@@ -230,8 +209,8 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWhenAttributeListIsEmpty() {
-            final Throwable exception = assertThrows(IllegalListFoundException.class,
-                    () -> ContentLoader.load("test", new ArrayList<>(0)));
+            final Throwable exception = assertThrows(IllegalListFoundException.class, () -> ContentLoader
+                    .load(getResourceAsStream(TestContentName.LARGE_SELECTION_NODES.getPath()), new ArrayList<>(0)));
             assertNotNull(exception);
         }
     }
@@ -294,8 +273,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition1.getString(), "1");
                 conditions.put(TestCondition.testCondition2.getString(), "0");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.SMALL_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -340,8 +319,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition1.getString(), "0");
                 conditions.put(TestCondition.testCondition2.getString(), "");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.SMALL_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -384,8 +363,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition1.getString(), "1");
                 conditions.put(TestCondition.testCondition2.getString(), "");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.SMALL_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -444,8 +423,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition3.getString(), "100");
                 conditions.put(TestCondition.testCondition4.getString(), "テスト");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -494,8 +473,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition3.getString(), "テスト");
                 conditions.put(TestCondition.testCondition4.getString(), "true");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -542,8 +521,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition3.getString(), "test");
                 conditions.put(TestCondition.testCondition4.getString(), "テスト");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -606,8 +585,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition5.getString(), "test");
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.LARGE_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.LARGE_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -660,8 +639,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition5.getString(), "test");
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.LARGE_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.LARGE_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -712,35 +691,12 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition5.getString(), "test");
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
-                final List<Map<String, String>> contents = ContentLoader
-                        .load(TestContentName.MEDIUM_CONDITION_NODES.getPath(), attributes, conditions);
+                final List<Map<String, String>> contents = ContentLoader.load(
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
             }
-        }
-
-        /**
-         * <pre>
-         * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの引数として空のコンテンツ名が渡された際の機能を確認する。
-         * </pre>
-         *
-         * <pre>
-         * ❏ 観点
-         * ・例外として {@link IllegalSequenceFoundException} が発生すること
-         * </pre>
-         *
-         * <pre>
-         * ❏ 留意点
-         * なし
-         * </pre>
-         */
-        @Test
-        public void testWhenContentNameIsEmpty() {
-            final Throwable exception = assertThrows(IllegalSequenceFoundException.class,
-                    () -> ContentLoader.load("", new ArrayList<>(0), new HashMap<>(0)));
-            assertNotNull(exception);
         }
 
         /**
@@ -762,7 +718,8 @@ public final class ContentLoaderTest {
         @Test
         public void testWhenAttributeListIsEmpty() {
             final Throwable exception = assertThrows(IllegalListFoundException.class,
-                    () -> ContentLoader.load("test", new ArrayList<>(0), new HashMap<>(0)));
+                    () -> ContentLoader.load(getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()),
+                            new ArrayList<>(0), new HashMap<>(0)));
             assertNotNull(exception);
         }
     }
@@ -952,89 +909,12 @@ public final class ContentLoaderTest {
         @Test
         public void testSimplePattern() {
             final Map<String, Object> content = new FluentReflection<Map<String, Object>>(ContentLoader.class)
-                    .add(String.class, TestContentName.DEFAULT.getPath()).invokeStatic("getContent");
+                    .add(InputStream.class, getResourceAsStream(TestContentName.DEFAULT.getPath()))
+                    .invokeStatic("getContent");
 
             assertNotNull(content);
             assertTrue(!content.isEmpty());
             assertTrue(content instanceof LinkedHashMap);
-        }
-    }
-
-    /**
-     * {@link ContentLoader#getFormatFilePath(String)} メソッドのテストメソッドを定義するテストクラスです。
-     * {@link ContentLoader#getFormatFilePath(String)} はprivateメソッドです。
-     *
-     * @author Kato Shinya
-     * @since 1.0
-     * @version 1.0
-     */
-    @Nested
-    final class TestGetFormatFilePath {
-
-        /**
-         * <pre>
-         * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#getFormatFilePath(String)} メソッドの返却値を確認する。
-         * 使用するコンテンツはファイル名が <code>"test"</code> で始まらないファイルを使用する。
-         * </pre>
-         *
-         * <pre>
-         * ❏ 観点
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が {@code null} ではないこと
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が空文字列ではないこと
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が <code>"%s/src/main/resources/content/%s%s</code> であること
-         * </pre>
-         *
-         * <pre>
-         * ❏ 留意点
-         * なし
-         * </pre>
-         */
-        @Test
-        public void testFormatFilePathForProduction() {
-
-            final String expectedFormatFilePath = "%s/src/main/resources/content/%s%s";
-
-            final FluentReflection<String> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(String.class, TestContentName.PRODUCTION.getPath());
-            final String actualFormatFilePath = reflection.invokeStatic("getFormatFilePath");
-
-            assertNotNull(actualFormatFilePath);
-            assertTrue(!actualFormatFilePath.isEmpty());
-            assertEquals(expectedFormatFilePath, actualFormatFilePath);
-        }
-
-        /**
-         * <pre>
-         * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#getFormatFilePath(String)} メソッドの返却値を確認する。
-         * 使用するコンテンツはファイル名が <code>"test"</code> で始まるファイルを使用する。
-         * </pre>
-         *
-         * <pre>
-         * ❏ 観点
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が {@code null} ではないこと
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が空文字列ではないこと
-         * ・{@link ContentLoader#getFormatFilePath(String)} の返却値が <code>"%s/src/test/resources/content/%s%s</code> であること
-         * </pre>
-         *
-         * <pre>
-         * ❏ 留意点
-         * なし
-         * </pre>
-         */
-        @Test
-        public void testFormatFilePathForTest() {
-
-            final String expectedFormatFilePath = "%s/src/test/resources/content/%s%s";
-
-            final FluentReflection<String> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(String.class, TestContentName.DEFAULT.getPath());
-            final String actualFormatFilePath = reflection.invokeStatic("getFormatFilePath");
-
-            assertNotNull(actualFormatFilePath);
-            assertTrue(!actualFormatFilePath.isEmpty());
-            assertEquals(expectedFormatFilePath, actualFormatFilePath);
         }
     }
 
@@ -1562,6 +1442,11 @@ public final class ContentLoaderTest {
             reflection.add(List.class, conditionList).add(Map.class, conditions);
             assertTrue(reflection.invokeStatic("all"));
         }
+    }
+
+    private InputStream getResourceAsStream(final String content) {
+        return ContentLoaderTest.class.getClassLoader()
+                .getResourceAsStream(ContentRoot.root() + content + Extension.json());
     }
 
     /**

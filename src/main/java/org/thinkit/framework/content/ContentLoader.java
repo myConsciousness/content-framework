@@ -224,7 +224,6 @@ final class ContentLoader {
             e.printStackTrace();
         }
 
-        System.out.println("Content -> " + sb.toString());
         return JsonConverter.toLinkedHashMap(sb.toString());
     }
 
