@@ -32,28 +32,29 @@ import lombok.NonNull;
 
 /**
  * 指定されたコンテンツ定義を基にコンテンツをロードする処理を定義したクラスです。<br>
- * 条件指定なしでコンテンツ情報をロードするための{@link #load(String, List)}メソッドと、
- * 条件指定ありでコンテンツ情報をロードするための{@link #load(String, List, Map)}メソッドを提供しています。<br>
+ * 条件指定なしでコンテンツ情報をロードするための {@link #load(InputStream, List)} メソッドと、
+ * 条件指定ありでコンテンツ情報をロードするための {@link #load(InputStream, List, Map)} メソッドを提供しています。
  * <p>
  * コンテンツに定義されたconditionIdの値が空文字列のレコードは無条件でロードされます。<br>
- * コンテンツのconditionIdに値を定義した場合は必ずコンテンツに条件を定義し{@link #load(String, List, Map)}を呼び出してください。
+ * コンテンツのconditionIdに値を定義した場合は必ずコンテンツに条件を定義し
+ * {@link #load(InputStream, List, Map)} を呼び出してください。
  *
  * <pre>
  * 条件指定なしの使用例:
- * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentName, attributes);</code>
+ * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes);</code>
  * </pre>
  *
  * <pre>
  * 条件指定ありの使用例:
- * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentName, attributes, conditions);</code>
+ * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes, conditions);</code>
  * </pre>
  *
  * @author Kato Shinya
  * @since 1.0
  * @version 1.0
  *
- * @see #load(String, List)
- * @see #load(String, List, Map)
+ * @see #load(InputStream, List)
+ * @see #load(InputStream, List, Map)
  */
 final class ContentLoader {
 
@@ -65,29 +66,21 @@ final class ContentLoader {
 
     /**
      * 引数として指定された定義体ファイルに定義された各要素を取得し配列として返却します。<br>
-     * コンテンツ定義に取得条件が存在しない場合はこの {@link ContentLoader#load(String, List)}
-     * メソッドを使用してください。<br>
+     * コンテンツ定義に取得条件が存在しない場合はこの {@link ContentLoader#load(InputStream, List)}
+     * メソッドを使用してください。
+     * <p>
      * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * <pre>
-     * ❏ 特記事項
-     * コンテンツのテストを行う際にはコンテンツ名を <code>"test"</code> で始めてください。
-     * コンテンツ名を <code>"test"</code> で始めることで自動的にテスト用のリソースフォルダを参照します。
-     * 以上の機能は必ず実行されるため、テスト以外で使用するコンテンツの名前は <code>"test"</code> で始めないでください。
-     * テスト以外の目的で使用するコンテンツ名が <code>"test"</code> で始まる場合は、
-     * テスト用のリソースフォルダに同名のコンテンツファイルが存在しない限り実行時に必ず失敗します。
-     * </pre>
-     *
-     * <pre>
      * 使用例:
-     * <code>List<Map<String, String>> contents = ContentLoader.load(contentName, attributes);</code>
+     * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes);</code>
      * </pre>
      *
-     * @param contentName 定義体ファイル名
-     * @param attributes  定義体から取得する要素名
-     * @return 定義体ファイルから取得した要素を格納した配列
+     * @param contentStream コンテンツの入力ストリーム
+     * @param attributes    定義体から取得する要素名
+     * @return コンテンツファイルから取得した要素を格納した配列
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      * @throws IllegalArgumentException コンテンツ名が空文字列、またはアトリビュートリストが空の場合
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
@@ -99,28 +92,20 @@ final class ContentLoader {
 
     /**
      * 引数として指定された定義体ファイルに定義された各要素を取得し配列として返却します。<br>
-     * コンテンツ定義に取得条件が存在しない場合はこの {@link ContentLoader#load(String, List, Map)}
-     * メソッドを使用してください。<br>
+     * コンテンツ定義に取得条件が存在しない場合はこの {@link ContentLoader#load(InputStream, List, Map)}
+     * メソッドを使用してください。
+     * <p>
      * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * <pre>
-     * ❏ 特記事項
-     * コンテンツのテストを行う際にはコンテンツ名を <code>"test"</code> で始めてください。
-     * コンテンツ名を <code>"test"</code> で始めることで自動的にテスト用のリソースフォルダを参照します。
-     * 以上の機能は必ず実行されるため、テスト以外で使用するコンテンツの名前は <code>"test"</code> で始めないでください。
-     * テスト以外の目的で使用するコンテンツ名が <code>"test"</code> で始まる場合は、
-     * テスト用のリソースフォルダに同名のコンテンツファイルが存在しない限り実行時に必ず失敗します。
-     * </pre>
-     *
-     * <pre>
      * 使用例:
-     * <code>List<Map<String, String>> contents = ContentLoader.load(contentName, attributes, conditions);</code>
+     * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes, conditions);</code>
      * </pre>
      *
-     * @param contentName 定義体ファイル名
-     * @param attributes  定義体から取得する要素名
-     * @param conditions  取得条件
-     * @return 定義体ファイルから取得した要素を格納した配列
+     * @param contentStream コンテンツの入力ストリーム
+     * @param attributes    定義体から取得する要素名
+     * @param conditions    取得条件
+     * @return コンテンツファイルから取得した要素を格納した配列
      *
      * @exception NullPointerException 引数として{@code null}が渡された場合
      * @throws IllegalArgumentException コンテンツ名が空文字列、またはアトリビュートリストが空の場合
@@ -139,16 +124,18 @@ final class ContentLoader {
     }
 
     /**
-     * コンテンツマップから指定された{@link Key}に紐づくノードリストを取得し返却します。
-     * ジェネリクスを使用したキャスト処理の際にはunchecked警告を避けられないため
-     * {@link SuppressWarnings}でuncheckedをこの{@link #getNodeList(Map, Key)}メソッドへ指定しています。
-     * 引数として{@code null}が渡された場合は実行時に必ず失敗します。
+     * コンテンツマップから指定された {@link Key} に紐づくノードリストを取得し返却します。
+     * <p>
+     * ジェネリクスを使用したキャスト処理の際には警告を避けられないため {@link SuppressWarnings} で
+     * {@code "unchecked"} をこの {@link #getNodeList(Map, Key)} メソッドへ指定しています。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param content    コンテンツマップ
      * @param contentKey コンテンツキー
-     * @return {@link Key}に紐づくノードリスト
+     * @return {@link Key} に紐づくノードリスト
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
     @SuppressWarnings("unchecked")
     private static List<Map<String, Object>> getNodeList(@NonNull Map<String, Object> content,
@@ -157,16 +144,18 @@ final class ContentLoader {
     }
 
     /**
-     * コンテンツマップから指定された{@link Key}に紐づくノードマップを取得し返却します。
-     * ジェネリクスを使用したキャスト処理の際にはunchecked警告を避けられないため
-     * {@link SuppressWarnings}でuncheckedをこの{@link #getNodeList(Map, Key)}メソッドへ指定しています。
-     * 引数として{@code null}が渡された場合は実行時に必ず失敗します。
+     * コンテンツマップから指定された {@link Key} に紐づくノードマップを取得し返却します。
+     * <p>
+     * ジェネリクスを使用したキャスト処理の際には警告を避けられないため {@link SuppressWarnings} で
+     * {@code "unchecked"} をこの {@link #getNodeList(Map, Key)} メソッドへ指定しています。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param content    コンテンツマップ
      * @param contentKey コンテンツキー
-     * @return {@link Key}に紐づくノードマップ
+     * @return {@link Key} に紐づくノードマップ
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
     @SuppressWarnings("unchecked")
     private static Map<String, Object> getNodeMap(@NonNull Map<String, Object> content, @NonNull Key contentKey) {
@@ -175,7 +164,8 @@ final class ContentLoader {
 
     /**
      * ノードマップから引数として指定されたコンテンツキーを基に文字列型の値を取得し返却します。
-     * 引数として{@code null}が渡された場合は実行時に必ず{@code null}が発生します。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param nodeMap    ノードマップ
      * @param contentKey コンテンツキー
@@ -187,35 +177,40 @@ final class ContentLoader {
 
     /**
      * ノードマップから引数として指定されたコンテンツキーを基に文字列型の値を取得し返却します。
-     * 引数として{@code null}が渡された場合は実行時に必ず失敗します。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param nodeMap    ノードマップ
      * @param contentKey コンテンツキー
      * @return ノードマップに格納されたコンテンツキーに紐づく文字列型の値
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
     private static String getString(@NonNull Map<String, Object> nodeMap, @NonNull String contentKey) {
         return (String) nodeMap.get(contentKey);
     }
 
     /**
-     * 引数として指定されたコンテンツ名に紐づくコンテンツファイルからコンテンツ情報を取得し返却します。
-     * コンテンツ情報は{@link JsonConverter}に定義されているメソッドを使用して変換を行っています。
+     * コンテンツの入力ストリームからコンテンツ情報を取得し返却します。
+     * <p>
+     * コンテンツ情報は {@link JsonConverter} に定義されているメソッドを使用して変換を行っています。
      *
-     * @param contentName コンテンツ名
+     * @param contentStream コンテンツの入力ストリーム
      * @return コンテンツマップ
      *
      * @exception NullPointerException 引数として{@code null}が渡された場合
+     *
+     * @see JsonConverter
      */
     private static Map<String, Object> getContent(@NonNull final InputStream contentStream) {
         return JsonConverter.toLinkedHashMap(FluentStreamReader.of(contentStream).toString());
     }
 
     /**
-     * 引数として渡された情報を基にコンテンツリストを生成し返却します。 <br>
-     * 引数として{@code null}が渡された場合は実行時に必ず失敗します。<br>
-     * <br>
+     * 引数として渡された情報を基にコンテンツリストを生成し返却します。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * <p>
      * コンテンツ定義に条件IDが設定されているレコードはコンテンツに定義された条件に合致する場合にのみ取得します。<br>
      * コンテンツ定義に条件IDが設定されていない（空文字列）の場合は無条件でレコードの取得を行います。
      *
@@ -252,14 +247,15 @@ final class ContentLoader {
     }
 
     /**
-     * コンテンツをロードする際に使用する条件IDを取得しリストとして返却します。<br>
-     * 引数として{@code null}が渡された場合は実行時に必ず失敗します。<br>
+     * コンテンツをロードする際に使用する条件IDを取得しリストとして返却します。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param conditionNodes 条件ノードリスト
      * @param conditions     条件の照合時に使用する条件マップ
      * @return 条件IDのリスト
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
     private static List<String> getConditionIdList(@NonNull List<Map<String, Object>> conditionNodes,
             @NonNull Map<String, String> conditions) {
@@ -279,17 +275,18 @@ final class ContentLoader {
     }
 
     /**
-     * コンテンツに定義された条件と{@link #load(String, List, Map)}に渡された条件を照合し、
-     * 全ての条件を満たしているか判定します。<br>
-     * 全ての条件を満たしている場合は{@code true}を返却し、それ以外の場合は{@code false}を返却します。<br>
-     * <br>
-     * 引数として{@code null}が渡された場合は実行時に必ず失敗します。
+     * コンテンツに定義された条件と {@link #load(String, List, Map)} に渡された条件を照合し、
+     * 全ての条件を満たしているか判定します。
+     * <p>
+     * 全ての条件を満たしている場合は {@code true} を返却し、それ以外の場合は {@code false} を返却します。
+     * <p>
+     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param contentConditionList コンテンツに定義された条件リスト
      * @param conditions           照合する値を格納したマップ
-     * @return 全ての条件を満たしている場合は{@code true}、それ以外は{@code false}
+     * @return 全ての条件を満たしている場合は {@code true} 、それ以外は {@code false}
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
     private static boolean all(@NonNull List<Map<String, Object>> contentConditionList,
             @NonNull Map<String, String> conditions) {
