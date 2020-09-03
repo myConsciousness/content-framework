@@ -76,7 +76,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    implementation 'org.thinkit.common:dev-utils:v1.0.0-5-g7db55aa'
+    implementation 'org.thinkit.common:dev-utils:v1.0.1'
+    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.1'
 }
 
 test {
