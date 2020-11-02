@@ -56,7 +56,7 @@ import lombok.NonNull;
  * @see #load(InputStream, List)
  * @see #load(InputStream, List, Map)
  */
-final class ContentLoader {
+public final class ContentLoader {
 
     /**
      * デフォルトコンストラクタ
