@@ -16,11 +16,9 @@ package org.thinkit.framework.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.thinkit.common.catalog.Extension;
-import org.thinkit.common.exception.IllegalListFoundException;
 import org.thinkit.common.util.reflection.FluentReflection;
 import org.thinkit.framework.content.catalog.ContentRoot;
 
@@ -189,29 +187,6 @@ public final class ContentLoaderTest {
                 assertEquals("1.0", content.get(TestContentAttribute.test4.getString()));
                 assertEquals("test", content.get(TestContentAttribute.test5.getString()));
             }
-        }
-
-        /**
-         * <pre>
-         * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List)} メソッドの引数として空のアトリビュートリストが渡された際の機能を確認する。
-         * </pre>
-         *
-         * <pre>
-         * ❏ 観点
-         * ・例外として {@link IllegalListFoundException} が発生すること
-         * </pre>
-         *
-         * <pre>
-         * ❏ 留意点
-         * なし
-         * </pre>
-         */
-        @Test
-        public void testWhenAttributeListIsEmpty() {
-            final Throwable exception = assertThrows(IllegalListFoundException.class, () -> ContentLoader
-                    .load(getResourceAsStream(TestContentName.LARGE_SELECTION_NODES.getPath()), new ArrayList<>(0)));
-            assertNotNull(exception);
         }
     }
 
@@ -697,30 +672,6 @@ public final class ContentLoaderTest {
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
             }
-        }
-
-        /**
-         * <pre>
-         * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの引数として空のアトリビュートリストが渡された際の機能を確認する。
-         * </pre>
-         *
-         * <pre>
-         * ❏ 観点
-         * ・例外として {@link IllegalListFoundException} が発生すること
-         * </pre>
-         *
-         * <pre>
-         * ❏ 留意点
-         * なし
-         * </pre>
-         */
-        @Test
-        public void testWhenAttributeListIsEmpty() {
-            final Throwable exception = assertThrows(IllegalListFoundException.class,
-                    () -> ContentLoader.load(getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()),
-                            new ArrayList<>(0), new HashMap<>(0)));
-            assertNotNull(exception);
         }
     }
 

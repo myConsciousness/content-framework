@@ -24,9 +24,9 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.thinkit.common.Precondition;
-import org.thinkit.common.util.json.JsonConverter;
+import org.thinkit.common.Preconditions;
 import org.thinkit.common.util.FluentStreamReader;
+import org.thinkit.common.util.json.JsonConverter;
 
 import lombok.NonNull;
 
@@ -85,7 +85,7 @@ final class ContentLoader {
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
             @NonNull final List<String> attributes) {
-        Precondition.requireNonEmpty(attributes);
+        Preconditions.requireNonEmpty(attributes);
 
         return load(contentStream, attributes, new HashMap<>(0));
     }
@@ -112,7 +112,7 @@ final class ContentLoader {
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
             @NonNull List<String> attributes, @NonNull final Map<String, String> conditions) {
-        Precondition.requireNonEmpty(attributes);
+        Preconditions.requireNonEmpty(attributes);
 
         final Map<String, Object> rawContent = getContent(contentStream);
         final List<Map<String, Object>> conditionNodes = getNodeList(rawContent, ConditionNodeKey.CONDITION_NODES);
