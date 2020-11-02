@@ -1,5 +1,8 @@
 # Content Framework
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 ## What is it?
 
 **_Makes your code more flexible to changes._**
@@ -15,6 +18,51 @@ As a framework each procedure is designed to be easy to perform, and the impleme
 - Be more flexible code for specification changes
 - Possible to reuse common values and behaviors defined as content and rules
 - Possible to change the behavior without changing the source code directly
+
+## How To Use
+
+### 1. Add the dependencies
+
+> **_Note:_**<br>
+> Replace version you want to use. Check the latest [Packages](https://github.com/myConsciousness/content-framework/packages).<br>
+> Please contact me for a token to download the package.
+
+**_Maven_**
+
+```xml
+<dependency>
+  <groupId>org.thinkit.framework.content</groupId>
+  <artifactId>content-framework</artifactId>
+  <version>v1.0.3</version>
+</dependency>
+
+<servers>
+  <server>
+    <id>github</id>
+    <username>myConsciousness</username>
+    <password>xxxxxxxxxxxxxxxxxx</password>
+  </server>
+</servers>
+```
+
+**_Gradle_**
+
+```gradle
+repositories {
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/myConsciousness/content-framework")
+        credentials {
+          username = "myConsciousness"
+          password = "xxxxxxxxxxxxxxxxxx"
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.thinkit.framework.content:content-framework:v1.0.3'
+}
+```
 
 ## License
 
@@ -34,11 +82,12 @@ the License.
 
 ## More Information
 
-`Content Framework` was designed and implemented by Kato Shinya, who works as a freelance developer from Japan.
+`Content Framework` was designed and implemented by Kato Shinya, who works as a freelance developer.
 
 Regardless of the means or content of communication, I would love to hear from you if you have any questions or concerns. I do not check my email box very often so a response may be delayed, anyway thank you for your interest!
 
 - [Creator Profile](https://github.com/myConsciousness)
+- [Creator Website](https://myconsciousness.github.io/)
 - [License](https://github.com/myConsciousness/content-framework/blob/master/LICENSE)
 - [Release Note](https://github.com/myConsciousness/content-framework/releases)
 - [Package](https://github.com/myConsciousness/content-framework/packages)
