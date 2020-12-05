@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.thinkit.common.Preconditions;
+import org.thinkit.common.base.precondition.Preconditions;
 import org.thinkit.common.util.FluentStreamReader;
 import org.thinkit.common.util.json.JsonConverter;
 

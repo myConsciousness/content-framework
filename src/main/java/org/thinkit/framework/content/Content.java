@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.thinkit.common.Preconditions;
+import org.thinkit.common.base.precondition.Preconditions;
 import org.thinkit.common.catalog.Extension;
 import org.thinkit.framework.content.annotation.ContentMapping;
 import org.thinkit.framework.content.catalog.ContentRoot;
@@ -98,7 +98,8 @@ public interface Content<R extends ContentEntity> {
         Preconditions.requireNonEmpty(attributes);
 
         final List<Map<String, String>> contents = ContentLoader.load(
-                content.getClassLoader().getResourceAsStream(ContentRoot.root() + mapping.content() + Extension.json()),
+                content.getClassLoader()
+                        .getResourceAsStream(ContentRoot.ROOT.getTag() + mapping.content() + Extension.json()),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
                 conditions == null ? new HashMap<>(0)
                         : conditions.entrySet().stream()

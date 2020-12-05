@@ -1397,7 +1397,7 @@ public final class ContentLoaderTest {
 
     private InputStream getResourceAsStream(final String content) {
         return ContentLoaderTest.class.getClassLoader()
-                .getResourceAsStream(ContentRoot.root() + content + Extension.json());
+                .getResourceAsStream(ContentRoot.ROOT.getTag() + content + Extension.json());
     }
 
     /**

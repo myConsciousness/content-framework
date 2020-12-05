@@ -68,11 +68,11 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.0'
 
     implementation 'org.projectlombok:lombok:1.18.12'
-	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
     implementation 'org.thinkit.common:dev-utils:v1.0.2'
-    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.1'
-    implementation 'org.thinkit.common:precondition-validator:v1.0.8'
+    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.2'
+    implementation 'org.thinkit.common:precondition-validator:v1.1.0'
 }
 
 test {

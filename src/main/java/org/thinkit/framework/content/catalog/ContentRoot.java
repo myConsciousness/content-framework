@@ -14,7 +14,7 @@
 
 package org.thinkit.framework.content.catalog;
 
-import org.thinkit.api.catalog.Catalog;
+import org.thinkit.api.catalog.BiCatalog;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
  * @version 1.0
  */
 @RequiredArgsConstructor
-public enum ContentRoot implements Catalog<ContentRoot> {
+public enum ContentRoot implements BiCatalog<ContentRoot, String> {
 
     /**
      * ルート
@@ -41,19 +41,8 @@ public enum ContentRoot implements Catalog<ContentRoot> {
     private final int code;
 
     /**
-     * ルート
+     * タグ
      */
     @Getter
-    private final String path;
-
-    /**
-     * {@link #ROOT} 要素の文字列表現を返却します。
-     *
-     * @return {@link #ROOT} 要素の文字列表現
-     *
-     * @see #ROOT
-     */
-    public static String root() {
-        return ROOT.getPath();
-    }
+    private final String tag;
 }
