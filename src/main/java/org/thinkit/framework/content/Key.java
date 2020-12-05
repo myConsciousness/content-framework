@@ -15,8 +15,10 @@
 package org.thinkit.framework.content;
 
 /**
- * コンテンツのキーに関する汎用的な処理を定義したインターフェースです。<br>
- * {@link Key} の具象クラスは必ず {@link #getKey()} を実装してください。
+ * An interface that defines a generic process for the key of the content.
+ * <p>
+ * The concrete class for the {@link Key} interface must implement
+ * {@link #getKey()} .
  *
  * @author Kato Shinya
  * @since 1.0
@@ -25,9 +27,9 @@ package org.thinkit.framework.content;
 interface Key {
 
     /**
-     * キーの文字列表現を返却します。
+     * Returns the string representation of the key.
      *
-     * @return キーの文字列表現
+     * @return The string representation of the key
      */
     public String getKey();
 }

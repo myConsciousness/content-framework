@@ -15,12 +15,13 @@
 package org.thinkit.framework.content.rule;
 
 /**
- * コンテンツのルールを抽象化したインターフェースです。
+ * An interface that abstracts the rules of content.
  * <p>
- * {@link Rule} インターフェースを実装する際には総称型として {@link Rule#run()} メソッドが返却する値の型を指定してください。
+ * When implementing the {@link Rule} interface, please specify the type of the
+ * value returned by the {@link Rule#execute()} method as a generic type.
  *
  * <pre>
- * 使用例 (String型を返却する場合):
+ * If a concrete rule object returns String result:
  * <code>
  * public class TestRule implements Rule&lt;String&gt; {
  *      // do something
@@ -35,10 +36,14 @@ package org.thinkit.framework.content.rule;
 public interface Rule<R> {
 
     /**
-     * コンテンツのルールを実行します。<br>
-     * このメソッドは {@link Rule} インターフェースの宣言時に定義した総称型の値を返却します。
+     * Search the content data and return as a result the data of the type specified
+     * in the generics.
+     * <p>
+     * This method returns the value of the generic type that you defined when
+     * declaring the {@link Rule} interface.
      *
-     * @return {@link Rule} インターフェースの宣言時に定義した総称型の値
+     * @return The value of the generic type defined when the {@link Rule} interface
+     *         was declared.
      */
     public R execute();
 }

@@ -1,4 +1,4 @@
- /*
+/*
  * Copyright 2020 Kato Shinya.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -12,11 +12,13 @@
  * the License.
  */
 
+import io.franzbecker.gradle.lombok.task.DelombokTask
+
 plugins {
     id 'java'
-    id 'application'
     id 'maven-publish'
     id 'com.palantir.git-version' version '0.12.2'
+    id 'io.franzbecker.gradle-lombok' version '4.0.0'
 }
 
 publishing {
@@ -85,11 +87,30 @@ test {
     }
 }
 
-task("reference", type: Javadoc) {
-    source = sourceSets.main.allJava
+lombok {
+    version = "1.18.16"
+}
+
+task delombok( type: DelombokTask ) {
+    description = 'Generates delomboked source.'
+
+    sourceSets.all {
+        if ( it.name != SourceSet.TEST_SOURCE_SET_NAME ) {
+            it.allJava.srcDirs.each {
+                args( it, '-d', "${buildDir}/${delombok.name}" )
+            }
+        }
+    }
+}
+
+javadoc {
+    dependsOn delombok
+
+    source = file( "${buildDir}/${delombok.name}" )
     title = 'Content Framework'
     options.links('https://docs.oracle.com/en/java/javase/13/docs/api/')
     options.charSet("utf-8")
     options.showFromPublic()
     destinationDir = file('./docs')
+    failOnError = false
 }

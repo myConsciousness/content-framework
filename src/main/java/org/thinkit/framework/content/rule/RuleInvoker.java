@@ -19,7 +19,8 @@ import org.thinkit.framework.content.Invokable;
 import lombok.NonNull;
 
 /**
- * {@link Rule} インターフェースを実装した具象ルールクラスの安全な呼び出しを行うルール起動クラスです。
+ * A rule invoking class that makes a safe call to the concrete rule class that
+ * implements the {@link Rule} interface.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -28,34 +29,37 @@ import lombok.NonNull;
 public final class RuleInvoker<R> implements Invokable<R> {
 
     /**
-     * コマンド
+     * The content rule
      */
     private Rule<R> rule;
 
     /**
-     * デフォルトコンストラクタ
+     * Default constructor
      */
     private RuleInvoker() {
     }
 
     /**
-     * コンストラクタ
+     * Constructor
      *
-     * @param rule ルール
+     * @param rule The content rule
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private RuleInvoker(@NonNull Rule<R> rule) {
         this.rule = rule;
     }
 
     /**
-     * 引数として指定された {@code Rule} オブジェクトを基に {@link RuleInvoker} クラスの新しいインスタンスを生成し返却します。
+     * Returns the new instance of the {@link RuleInvoker} class based on the
+     * {@code Rule} object specified as an argument.
      *
-     * @param Rule コマンド
-     * @return {@link RuleInvoker} クラスの新しいインスタンス
+     * @param <R>  Data types to return
+     * @param rule The content rule
+     * @return The new instance of the {@link RuleInvoker} class based on the
+     *         {@code Rule} object specified as an argument
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     public static <R> RuleInvoker<R> of(@NonNull Rule<R> rule) {
         return new RuleInvoker<>(rule);

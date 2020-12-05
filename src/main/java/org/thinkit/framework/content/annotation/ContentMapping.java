@@ -20,7 +20,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 使用するコンテンツファイルへのマッピングを行うアノテーションです。
+ * It is an annotation that makes a mapping to a referenced content file.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -31,9 +31,9 @@ import java.lang.annotation.Target;
 public @interface ContentMapping {
 
     /**
-     * コンテンツファイルまでの相対パスを指定します。
+     * Specify the relative path to the content file.
      *
-     * @return コンテンツ
+     * @return The relative path to the content file
      */
     String content();
 }

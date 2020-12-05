@@ -19,7 +19,8 @@ import org.thinkit.framework.content.entity.ContentEntity;
 import lombok.NonNull;
 
 /**
- * {@link Content} インターフェースを実装した具象コンテンツクラスの安全な呼び出しを行うコンテンツ起動クラスです。
+ * The content-initiating class that makes a secure call to the concrete content
+ * class that implements the {@link Content} interface.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -28,35 +29,37 @@ import lombok.NonNull;
 public final class ContentInvoker<R extends ContentEntity> implements Invokable<R> {
 
     /**
-     * ルール
+     * The content
      */
     private Content<R> content;
 
     /**
-     * デフォルトコンストラクタ
+     * Default constructor
      */
     private ContentInvoker() {
     }
 
     /**
-     * コンストラクタ
+     * Constructor
      *
-     * @param content コンテンツ
+     * @param content The content
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private ContentInvoker(@NonNull Content<R> content) {
         this.content = content;
     }
 
     /**
-     * 引数として渡された {@code Content} オブジェクトを基に {@link ContentInvoker}
-     * クラスの新しいインスタンスを生成し返却します。
+     * Returns the new instance of the {@link ContentInvoker} class based on the
+     * {@code Content} object passed as an argument.
      *
-     * @param content コンテンツ
-     * @return {@link ContentInvoker} クラスの新しいインスタンス
+     * @param <R>     Data types to return
+     * @param content The content
+     * @return the new instance of the {@link ContentInvoker} class based on the
+     *         {@code Content} object passed as an argument
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     public static <R extends ContentEntity> ContentInvoker<R> of(@NonNull Content<R> content) {
         return new ContentInvoker<>(content);

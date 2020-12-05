@@ -15,13 +15,14 @@
 package org.thinkit.framework.content;
 
 /**
- * 呼び出し可能なオブジェクトを抽象化したインターフェースです。
+ * The interface that abstracts the invokable objects.
  * <p>
- * {@link Invokable} インターフェースを実装する際には総称型として {@link Invokable#invoke()}
- * メソッドが返却する値の型を指定してください。
+ * When implementing the {@link Invokable} interface, please specify the type of
+ * the value returned by the {@link Invokable#invoke()} method as a generic
+ * type.
  *
  * <pre>
- * 使用例 (String型を返却する場合):
+ * If the invokable object returns the String result:
  * <code>
  * public class TestInvoker implements Invokable&lt;String&gt; {
  *      // do something
@@ -36,10 +37,14 @@ package org.thinkit.framework.content;
 public interface Invokable<R> {
 
     /**
-     * {@link Invokable#invoke()} メソッドを実装した具象クラスの処理を実行します。<br>
-     * このメソッドは {@link Invokable} インターフェースの宣言時に定義した総称型の値を返却します。
+     * Invokes the processing of a concrete class that implements the
+     * {@link Invokable#invoke()} method.
+     * <p>
+     * This method returns the value of the generic type defined when the
+     * {@link Invokable} interface was declared.
      *
-     * @return {@link Invokable} インターフェースの宣言時に定義した総称型の値
+     * @return The value of the generic type defined when declaring the
+     *         {@link Invokable} interface
      */
     public R invoke();
 }

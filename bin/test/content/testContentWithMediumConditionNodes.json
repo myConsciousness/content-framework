@@ -53,26 +53,26 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "false"
+            "operator": "=",
+            "operand": "false"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "テスト"
+            "operator": "=",
+            "operand": "テスト"
           }
         ]
       }
@@ -85,26 +85,26 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "false"
+            "operator": "=",
+            "operand": "false"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "テスト"
+            "operator": "=",
+            "operand": "テスト"
           }
         ]
       }
@@ -117,26 +117,26 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "テスト"
+            "operator": "=",
+            "operand": "テスト"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "true"
+            "operator": "=",
+            "operand": "true"
           }
         ]
       }

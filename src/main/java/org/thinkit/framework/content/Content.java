@@ -28,19 +28,10 @@ import org.thinkit.framework.content.entity.ContentEntity;
 import lombok.NonNull;
 
 /**
- * コンテンツを抽象化したインターフェースです。
+ * The interface that abstracts the content.
  * <p>
- * {@link Content} インターフェースを実装する際には総称型として {@link Content#execute()}
- * メソッドが返却する値の型を指定してください。
- *
- * <pre>
- * 使用例 (String型を返却する場合):
- * <code>
- * public class TestContent implements Content&lt;Something&gt; {
- *      // do something
- * }
- * </code>
- * </pre>
+ * When implementing the {@link Content} interface, specify the type of the
+ * value returned by the {@link Content#execute()} method as a generic type.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -49,43 +40,44 @@ import lombok.NonNull;
 public interface Content<R extends ContentEntity> {
 
     /**
-     * コンテンツファイルに定義されているアトリビュート名を格納したリストを返却します。
+     * Returns the list containing the name of the target attribute to be retrieved
+     * from the content file.
      *
-     * @return コンテンツファイルに定義されたアトリビュート名を格納したリスト
-     * @see #getConditions()
-     * @see #loadContent(Content)
+     * @return The list containing the name of the target attribute to be retrieved
+     *         from the content file
      */
     public List<Attribute> getAttributes();
 
     /**
-     * コンテンツファイルから情報を取得する際の条件を格納したマップを返却します。
+     * Returns the map containing the conditions for get the content.
      *
-     * @return コンテンツファイルに定義されたレコード取得条件を格納したマップ
-     * @see #loadContent(Content)
+     * @return The map containing the conditions for get the content
      */
     public Map<Condition, String> getConditions();
 
     /**
-     * ルールを実行します。<br>
-     * このメソッドは {@link Content} インターフェースの宣言時に定義した総称型の値を返却します。
+     * Returns the data got from the content as the data type specified when
+     * implementing the {@link Content} interface.
      *
-     * @return {@link Content} インターフェースの宣言時に定義した総称型の値
+     * @return The data got from the content as the data type specified when
+     *         implementing the {@link Content} interface
      */
     public R execute();
 
     /**
-     * 引数として渡されたコンテンツオブジェクトに紐づくコンテンツファイルを参照しロード処理を行います。
+     * Refers to the content file associated with the content object passed as an
+     * argument and perform the loading process.
      *
-     * @param content コンテンツ
-     * @return 引数として指定された {@code content} に紐づくコンテンツ情報を格納したマップ
+     * @param content The content
+     * @return A map containing the content data for the {@code content} specified
+     *         as an argument
      *
-     * @see #getAttributes()
-     * @see #getConditions()
-     *
-     * @exception NullPointerException 引数として指定された {@code content} が {@code null} の場合
-     * @throws ContentHandlingException 実装された {@link #getAttributes()} メソッドの返却値が
-     *                                  {@code null} の場合、または
-     *                                  {@link #getAttributes()} メソッドの返却値が空リストの場合
+     * @exception NullPointerException If {@code null} is passed as an argument
+     * @throws ContentHandlingException If the return value of the implemented
+     *                                  {@link #getAttributes()} method is
+     *                                  {@code null} , or if the return value of the
+     *                                  {@link #getAttributes()} method is an empty
+     *                                  list
      */
     default List<Map<String, String>> loadContent(@NonNull Class<? extends Content<R>> content) {
 

@@ -17,7 +17,7 @@ package org.thinkit.framework.content;
 import lombok.RequiredArgsConstructor;
 
 /**
- * コンテンツの条件ノードのキーを管理するEnumクラスです。
+ * The enum constant that manages keys of condition node.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -27,60 +27,60 @@ import lombok.RequiredArgsConstructor;
 enum ConditionNodeKey implements Key {
 
     /**
-     * 条件ノード群
+     * The condition nodes ({@code "conditionNodes"})
      */
     CONDITION_NODES(Key.conditionNodes),
 
     /**
-     * ノード
+     * The node ({@code "node"})
      */
     NODE(Key.node),
 
     /**
-     * 条件ID
+     * The condition id ({@code "conditionId"})
      */
     CONDITION_ID(Key.conditionId),
 
     /**
-     * 除外
+     * The exclude ({@code "exclude"})
      */
     EXCLUDE(Key.exclude),
 
     /**
-     * 条件群
+     * The conditions ({@code "conditions"})
      */
     CONDITIONS(Key.conditions),
 
     /**
-     * 条件
+     * The condition ({@code "condition"})
      */
     CONDITION(Key.condition),
 
     /**
-     * キー名
+     * The key name ({@code "keyName"})
      */
     KEY_NAME(Key.keyName),
 
     /**
-     * 演算子
+     * The operator ({@code "operator"})
      */
-    OPERAND(Key.operand),
+    OPERATOR(Key.operator),
 
     /**
-     * 値
+     * The operand ({@code "operand"})
      */
-    VALUE(Key.value);
+    OPERAND(Key.operand);
 
     /**
-     * キー
+     * The key
      */
     private final Key key;
 
     /**
-     * キー定数
+     * The key constant group
      */
     private enum Key {
-        conditionNodes, node, conditionId, exclude, conditions, condition, keyName, operand, dataType, value;
+        conditionNodes, node, conditionId, exclude, conditions, condition, keyName, operand, dataType, operator;
     }
 
     @Override

@@ -31,21 +31,25 @@ import org.thinkit.common.util.json.JsonConverter;
 import lombok.NonNull;
 
 /**
- * 指定されたコンテンツ定義を基にコンテンツをロードする処理を定義したクラスです。<br>
- * 条件指定なしでコンテンツ情報をロードするための {@link #load(InputStream, List)} メソッドと、
- * 条件指定ありでコンテンツ情報をロードするための {@link #load(InputStream, List, Map)} メソッドを提供しています。
+ * The class that defines the process of loading the content data based on the
+ * specified content definition.
  * <p>
- * コンテンツに定義されたconditionIdの値が空文字列のレコードは無条件でロードされます。<br>
- * コンテンツのconditionIdに値を定義した場合は必ずコンテンツに条件を定義し
- * {@link #load(InputStream, List, Map)} を呼び出してください。
+ * It provides a {@link #load(InputStream, List)} method to load content data
+ * without conditions, and a {@link #load(InputStream, List, Map)} method to
+ * load content data with conditions.
+ * <p>
+ * If the value of {@code "conditionId"} defined in the content is an empty
+ * string, the record will be loaded unconditionally. If you have defined a
+ * value for the conditionId of the content, be sure to define a condition for
+ * the content and call {@link #load(InputStream, List, Map)}.
  *
  * <pre>
- * 条件指定なしの使用例:
+ * If the condition is not specified:
  * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes);</code>
  * </pre>
  *
  * <pre>
- * 条件指定ありの使用例:
+ * If the condition is specified:
  * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes, conditions);</code>
  * </pre>
  *
@@ -59,29 +63,29 @@ import lombok.NonNull;
 public final class ContentLoader {
 
     /**
-     * デフォルトコンストラクタ
+     * Default constructor
      */
     private ContentLoader() {
     }
 
     /**
-     * 引数として指定された定義体ファイルに定義された各要素を取得し配列として返却します。<br>
-     * コンテンツ定義に取得条件が存在しない場合はこの {@link ContentLoader#load(InputStream, List)}
-     * メソッドを使用してください。
+     * Gets each element defined in the content file specified as an argument and
+     * return it as List.
      * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * Use this {@link ContentLoader#load(InputStream, List)} method if there are no
+     * fetch conditions in the content definition.
      *
      * <pre>
-     * 使用例:
+     * Get the content data without conditions:
      * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes);</code>
      * </pre>
      *
-     * @param contentStream コンテンツの入力ストリーム
-     * @param attributes    定義体から取得する要素名
-     * @return コンテンツファイルから取得した要素を格納した配列
+     * @param contentStream The stream of content file
+     * @param attributes    The Attribute names to be acquired
+     * @return The List containing the elements retrieved from the content file
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
-     * @throws IllegalArgumentException コンテンツ名が空文字列、またはアトリビュートリストが空の場合
+     * @exception NullPointerException     If {@code null} is passed as an argument
+     * @exception IllegalArgumentException If the attribute list is empty
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
             @NonNull final List<String> attributes) {
@@ -91,24 +95,25 @@ public final class ContentLoader {
     }
 
     /**
-     * 引数として指定された定義体ファイルに定義された各要素を取得し配列として返却します。<br>
-     * コンテンツ定義に取得条件が存在しない場合はこの {@link ContentLoader#load(InputStream, List, Map)}
-     * メソッドを使用してください。
+     * Gets each element defined in the content file specified and return it as a
+     * list.
      * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * コUse this {@link ContentLoader#load(InputStream, List, Map)} method if there
+     * are no acquisition conditions in the content definition.
      *
      * <pre>
-     * 使用例:
+     * Get the content data with conditions:
      * <code>List&lt;Map&lt;String, String&gt;&gt; contents = ContentLoader.load(contentStream, attributes, conditions);</code>
      * </pre>
      *
-     * @param contentStream コンテンツの入力ストリーム
-     * @param attributes    定義体から取得する要素名
-     * @param conditions    取得条件
-     * @return コンテンツファイルから取得した要素を格納した配列
+     * @param contentStream The stream of content file
+     * @param attributes    The Attribute names to be acquired
+     * @param conditions    The conditional map to use when getting data from the
+     *                      content file
+     * @return The List containing the elements retrieved from the content file
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
-     * @throws IllegalArgumentException コンテンツ名が空文字列、またはアトリビュートリストが空の場合
+     * @exception NullPointerException     If {@code null} is passed as an argument
+     * @exception IllegalArgumentException If the attribute list is empty
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
             @NonNull List<String> attributes, @NonNull final Map<String, String> conditions) {
@@ -124,18 +129,18 @@ public final class ContentLoader {
     }
 
     /**
-     * コンテンツマップから指定された {@link Key} に紐づくノードリストを取得し返却します。
+     * Returns the list of nodes associated with the specified {@link Key} from the
+     * content map.
      * <p>
-     * ジェネリクスを使用したキャスト処理の際には警告を避けられないため {@link SuppressWarnings} で
-     * {@code "unchecked"} をこの {@link #getNodeList(Map, Key)} メソッドへ指定しています。
-     * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * Because it's impossible to avoid warnings when casting with generics, we
+     * specify {@link SuppressWarnings} with {@code "unchecked"} to this
+     * {@link #getNodeList(Map, Key)} method.
      *
-     * @param content    コンテンツマップ
-     * @param contentKey コンテンツキー
-     * @return {@link Key} に紐づくノードリスト
+     * @param content    The content map
+     * @param contentKey The content key
+     * @return A list of nodes associated with {@link Key}
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     @SuppressWarnings("unchecked")
     private static List<Map<String, Object>> getNodeList(@NonNull Map<String, Object> content,
@@ -144,18 +149,18 @@ public final class ContentLoader {
     }
 
     /**
-     * コンテンツマップから指定された {@link Key} に紐づくノードマップを取得し返却します。
+     * Returns the node map associated with the specified {@link Key} from the
+     * content map.
      * <p>
-     * ジェネリクスを使用したキャスト処理の際には警告を避けられないため {@link SuppressWarnings} で
-     * {@code "unchecked"} をこの {@link #getNodeList(Map, Key)} メソッドへ指定しています。
-     * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * Because it's impossible to avoid warnings when casting with generics, we
+     * specify {@link SuppressWarnings} with {@code "unchecked"} to this
+     * {@link #getNodeMap(Map, Key)} method.
      *
-     * @param content    コンテンツマップ
-     * @param contentKey コンテンツキー
-     * @return {@link Key} に紐づくノードマップ
+     * @param content    The content map
+     * @param contentKey The content key
+     * @return A list of nodes associated with {@link Key}
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     @SuppressWarnings("unchecked")
     private static Map<String, Object> getNodeMap(@NonNull Map<String, Object> content, @NonNull Key contentKey) {
@@ -163,63 +168,61 @@ public final class ContentLoader {
     }
 
     /**
-     * ノードマップから引数として指定されたコンテンツキーを基に文字列型の値を取得し返却します。
+     * Returns a value of type string based on the content key specified as an
+     * argument from the node map.
      * <p>
      * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
-     * @param nodeMap    ノードマップ
-     * @param contentKey コンテンツキー
-     * @return ノードマップに格納されたコンテンツキーに紐づく文字列型の値
+     * @param nodeMap    The node map
+     * @param contentKey The content key
+     * @return A String value tied to a content key stored in the node map
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static String getString(@NonNull Map<String, Object> nodeMap, @NonNull Key contentKey) {
         return getString(nodeMap, contentKey.getKey());
     }
 
     /**
-     * ノードマップから引数として指定されたコンテンツキーを基に文字列型の値を取得し返却します。
-     * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * Returns a value of type string based on the content key specified as an
+     * argument from the node map.
      *
-     * @param nodeMap    ノードマップ
-     * @param contentKey コンテンツキー
-     * @return ノードマップに格納されたコンテンツキーに紐づく文字列型の値
+     * @param nodeMap    The node map
+     * @param contentKey The content key
+     * @return A String value tied to a content key stored in the node map
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static String getString(@NonNull Map<String, Object> nodeMap, @NonNull String contentKey) {
         return (String) nodeMap.get(contentKey);
     }
 
     /**
-     * コンテンツの入力ストリームからコンテンツ情報を取得し返却します。
-     * <p>
-     * コンテンツ情報は {@link JsonConverter} に定義されているメソッドを使用して変換を行っています。
+     * Returns content data from the input stream of content file.
      *
-     * @param contentStream コンテンツの入力ストリーム
-     * @return コンテンツマップ
+     * @param contentStream The stream of content file
+     * @return The content data from the input stream of content
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
-     *
-     * @see JsonConverter
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static Map<String, Object> getContent(@NonNull final InputStream contentStream) {
         return JsonConverter.toLinkedHashMap(FluentStreamReader.of(contentStream).toString());
     }
 
     /**
-     * 引数として渡された情報を基にコンテンツリストを生成し返却します。
+     * Returns the content list based on the information passed as arguments.
      * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
-     * <p>
-     * コンテンツ定義に条件IDが設定されているレコードはコンテンツに定義された条件に合致する場合にのみ取得します。<br>
-     * コンテンツ定義に条件IDが設定されていない（空文字列）の場合は無条件でレコードの取得を行います。
+     * A record with a condition ID in the content definition will be fetched only
+     * if it matches the condition defined in the content. If there is no condition
+     * ID in the content definition, the record will be fetched unconditionally.
      *
-     * @param attributes      コンテンツから取得する値に紐づくキー
-     * @param rawContent      加工されていないコンテンツオブジェクト
-     * @param conditionIdList 取得する対象の条件IDが格納されたリスト
-     * @return コンテンツリスト
+     * @param attributes      The list of keys associated to the values to be
+     *                        fetched from the content
+     * @param rawContent      The unprocessed content objects
+     * @param conditionIdList A list containing the condition ID to be fetched
+     * @return The content list
      *
-     * @exception NullPointerException 引数として{@code null}が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static List<Map<String, String>> getContentList(@NonNull List<String> attributes,
             @NonNull Map<String, Object> rawContent, @NonNull List<String> conditionIdList) {
@@ -247,15 +250,13 @@ public final class ContentLoader {
     }
 
     /**
-     * コンテンツをロードする際に使用する条件IDを取得しリストとして返却します。
-     * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * Gets the condition ID used to load the content and returns it as a list.
      *
-     * @param conditionNodes 条件ノードリスト
-     * @param conditions     条件の照合時に使用する条件マップ
-     * @return 条件IDのリスト
+     * @param conditionNodes The list containing the conditional nodes
+     * @param conditions     The conditional map to use when matching conditions
+     * @return The List of condition IDs obtained as a result of matching
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static List<String> getConditionIdList(@NonNull List<Map<String, Object>> conditionNodes,
             @NonNull Map<String, String> conditions) {
@@ -275,18 +276,15 @@ public final class ContentLoader {
     }
 
     /**
-     * コンテンツに定義された条件と {@link #load(String, List, Map)} に渡された条件を照合し、
-     * 全ての条件を満たしているか判定します。
-     * <p>
-     * 全ての条件を満たしている場合は {@code true} を返却し、それ以外の場合は {@code false} を返却します。
-     * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
+     * Tests the conditions defined in the content against those passed to
+     * {@link #load(String, List, Map)} and determine if all conditions are met.
      *
-     * @param contentConditionList コンテンツに定義された条件リスト
-     * @param conditions           照合する値を格納したマップ
-     * @return 全ての条件を満たしている場合は {@code true} 、それ以外は {@code false}
+     * @param contentConditionList The List of conditions defined in the content
+     * @param conditions           The conditional map to use when matching
+     *                             conditions
+     * @return If all conditions are met {@code true} , otherwise {@code false}
      *
-     * @exception NullPointerException 引数として {@code null} が渡された場合
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static boolean all(@NonNull List<Map<String, Object>> contentConditionList,
             @NonNull Map<String, String> conditions) {
@@ -295,7 +293,7 @@ public final class ContentLoader {
 
         for (Map<String, Object> contentCondition : contentConditionList) {
             final String keyName = getString(contentCondition, ConditionNodeKey.KEY_NAME);
-            final String value = getString(contentCondition, ConditionNodeKey.VALUE);
+            final String value = getString(contentCondition, ConditionNodeKey.OPERAND);
 
             for (Entry<String, String> entry : entrySet) {
                 if (Objects.equals(keyName, entry.getKey()) && !Objects.equals(value, entry.getValue())) {

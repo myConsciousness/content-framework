@@ -63,14 +63,14 @@ public final class ConditionNodeKeyTest {
     private static final String KEY_KEY_NAME = "keyName";
 
     /**
+     * キー名 : operator
+     */
+    private static final String KEY_OPERATOR = "operator";
+
+    /**
      * キー名 : operand
      */
     private static final String KEY_OPERAND = "operand";
-
-    /**
-     * キー名 : value
-     */
-    private static final String KEY_VALUE = "value";
 
     /**
      * <pre>
@@ -105,7 +105,7 @@ public final class ConditionNodeKeyTest {
         assertEquals(KEY_CONDITIONS, ConditionNodeKey.CONDITIONS.getKey());
         assertEquals(KEY_CONDITION, ConditionNodeKey.CONDITION.getKey());
         assertEquals(KEY_KEY_NAME, ConditionNodeKey.KEY_NAME.getKey());
+        assertEquals(KEY_OPERATOR, ConditionNodeKey.OPERATOR.getKey());
         assertEquals(KEY_OPERAND, ConditionNodeKey.OPERAND.getKey());
-        assertEquals(KEY_VALUE, ConditionNodeKey.VALUE.getKey());
     }
 }

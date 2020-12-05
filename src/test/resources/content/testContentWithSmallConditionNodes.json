@@ -32,14 +32,14 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "0"
+            "operator": "=",
+            "operand": "0"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": ""
+            "operator": "=",
+            "operand": ""
           }
         ]
       }
@@ -52,14 +52,14 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "1"
+            "operator": "=",
+            "operand": "1"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "0"
+            "operator": "=",
+            "operand": "0"
           }
         ]
       }

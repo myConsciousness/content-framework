@@ -17,7 +17,7 @@ package org.thinkit.framework.content;
 import lombok.RequiredArgsConstructor;
 
 /**
- * コンテンツの選択ノードのキーを管理するクラスです。
+ * The enum constant that manages keys of selection node.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -27,27 +27,27 @@ import lombok.RequiredArgsConstructor;
 enum SelectionNodeKey implements Key {
 
     /**
-     * 選択ノード群
+     * The selection nodes ({@code "selectionNodes"})
      */
     SELECTION_NODES(Key.selectionNodes),
 
     /**
-     * ノード
+     * The node ({@code "node"})
      */
     NODE(Key.node),
 
     /**
-     * 条件ID
+     * The condition id ({@code "conditionId"})
      */
     CONDITION_ID(Key.conditionId);
 
     /**
-     * キー
+     * The key
      */
     private final Key key;
 
     /**
-     * キー定数
+     * The key constants group
      */
     private enum Key {
         selectionNodes, node, conditionId;

@@ -95,38 +95,38 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "1000"
+            "operator": "=",
+            "operand": "1000"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "true"
+            "operator": "=",
+            "operand": "true"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "true"
+            "operator": "=",
+            "operand": "true"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition5",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition6",
-            "operand": "=",
-            "value": "10L"
+            "operator": "=",
+            "operand": "10L"
           }
         ]
       }
@@ -139,38 +139,38 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "1000"
+            "operator": "=",
+            "operand": "1000"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "true"
+            "operator": "=",
+            "operand": "true"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "false"
+            "operator": "=",
+            "operand": "false"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition5",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition6",
-            "operand": "=",
-            "value": "10L"
+            "operator": "=",
+            "operand": "10L"
           }
         ]
       }
@@ -183,38 +183,38 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "1000"
+            "operator": "=",
+            "operand": "1000"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "false"
+            "operator": "=",
+            "operand": "false"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "true"
+            "operator": "=",
+            "operand": "true"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition5",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition6",
-            "operand": "=",
-            "value": "10L"
+            "operator": "=",
+            "operand": "10L"
           }
         ]
       }
@@ -227,38 +227,38 @@
         "conditions": [
           {
             "keyName": "testCondition1",
-            "operand": "=",
-            "value": "1000"
+            "operator": "=",
+            "operand": "1000"
           },
 
           {
             "keyName": "testCondition2",
-            "operand": "=",
-            "value": "false"
+            "operator": "=",
+            "operand": "false"
           },
 
           {
             "keyName": "testCondition3",
-            "operand": "=",
-            "value": "false"
+            "operator": "=",
+            "operand": "false"
           },
 
           {
             "keyName": "testCondition4",
-            "operand": "=",
-            "value": "100"
+            "operator": "=",
+            "operand": "100"
           },
 
           {
             "keyName": "testCondition5",
-            "operand": "=",
-            "value": "test"
+            "operator": "=",
+            "operand": "test"
           },
 
           {
             "keyName": "testCondition6",
-            "operand": "=",
-            "value": "10L"
+            "operator": "=",
+            "operand": "10L"
           }
         ]
       }

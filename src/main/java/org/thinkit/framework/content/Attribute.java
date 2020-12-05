@@ -15,8 +15,11 @@
 package org.thinkit.framework.content;
 
 /**
- * アトリビュートを表現するEnum定数で必須となる処理を定義したインターフェースです。</br>
- * アトリビュートのEnum定数を定義する際は必ず当該インターフェースを実装してください。
+ * The interface that defines the processing required by Enum constants to
+ * represent the attributes.
+ * <p>
+ * Whenever you define an Enum constant for attributes, be sure to implement the
+ * relevant interface.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -25,9 +28,9 @@ package org.thinkit.framework.content;
 public interface Attribute {
 
     /**
-     * Enum要素の文字列表現を返却します。
+     * Returns the string representation of the Enum element.
      *
-     * @return Enum要素の文字列表現。
+     * @return The string representation of the Enum element
      */
     public String getString();
 }

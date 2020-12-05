@@ -1171,8 +1171,8 @@ public final class ContentLoaderTest {
                 final Map<String, Object> condition = new HashMap<>();
 
                 condition.put(ConditionNodeKey.KEY_NAME.getKey(), "testCondition1");
-                condition.put(ConditionNodeKey.OPERAND.getKey(), "=");
-                condition.put(ConditionNodeKey.VALUE.getKey(), String.valueOf(i));
+                condition.put(ConditionNodeKey.OPERATOR.getKey(), "=");
+                condition.put(ConditionNodeKey.OPERAND.getKey(), String.valueOf(i));
                 conditionList.add(condition);
 
                 items.put(ConditionNodeKey.CONDITIONS.getKey(), conditionList);
@@ -1231,8 +1231,8 @@ public final class ContentLoaderTest {
 
                 for (int j = 0; j < 3; j++) {
                     condition.put(ConditionNodeKey.KEY_NAME.getKey(), String.format("testCondition%s", j + 1));
-                    condition.put(ConditionNodeKey.OPERAND.getKey(), "=");
-                    condition.put(ConditionNodeKey.VALUE.getKey(), String.format("testValue%s%s", i, j));
+                    condition.put(ConditionNodeKey.OPERATOR.getKey(), "=");
+                    condition.put(ConditionNodeKey.OPERAND.getKey(), String.format("testValue%s%s", i, j));
                     conditionList.add(condition);
                 }
 
@@ -1294,8 +1294,8 @@ public final class ContentLoaderTest {
 
                 for (int j = 0; j < 3; j++) {
                     condition.put(ConditionNodeKey.KEY_NAME.getKey(), String.format("testCondition%s", j + 1));
-                    condition.put(ConditionNodeKey.OPERAND.getKey(), "=");
-                    condition.put(ConditionNodeKey.VALUE.getKey(), String.format("testValue%s%s", i, j));
+                    condition.put(ConditionNodeKey.OPERATOR.getKey(), "=");
+                    condition.put(ConditionNodeKey.OPERAND.getKey(), String.format("testValue%s%s", i, j));
                     conditionList.add(condition);
                 }
 
@@ -1382,8 +1382,8 @@ public final class ContentLoaderTest {
 
             for (int i = 1; i <= count; i++) {
                 condition.put(ConditionNodeKey.KEY_NAME.getKey(), String.valueOf(i));
-                condition.put(ConditionNodeKey.OPERAND.getKey(), "=");
-                condition.put(ConditionNodeKey.VALUE.getKey(), String.valueOf(i));
+                condition.put(ConditionNodeKey.OPERATOR.getKey(), "=");
+                condition.put(ConditionNodeKey.OPERAND.getKey(), String.valueOf(i));
                 conditionList.add(condition);
 
                 conditions.put(TestCondition.testCondition1.getString(), String.valueOf(i));

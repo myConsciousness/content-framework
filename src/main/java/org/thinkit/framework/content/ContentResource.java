@@ -15,8 +15,7 @@
 package org.thinkit.framework.content;
 
 /**
- * コンテンツのEnum定数で必須となる処理を定義したインターフェースです。</br>
- * コンテンツのEnum定数を定義する際は必ず当該インターフェースを実装してください。
+ * The interface is an abstraction of content resources.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -25,9 +24,9 @@ package org.thinkit.framework.content;
 public interface ContentResource {
 
     /**
-     * コンテンツファイルまでの相対パスを返却します。
+     * Returns the relative path to the content file.
      *
-     * @return コンテンツファイルまでの相対パス
+     * @return The relative path to the content file.
      */
     public String getPath();
 }

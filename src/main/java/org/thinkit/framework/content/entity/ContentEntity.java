@@ -15,8 +15,10 @@
 package org.thinkit.framework.content.entity;
 
 /**
- * コンテンツのエンティティであることを示すマーカーインターフェースです。
- * 具象コンテンツクラスの総称型として指定するエンティティクラスは必ずこのインターフェースを実装してください。
+ * A marker interface that indicates that the object is a content entity.
+ * <p>
+ * A Any entity used as a result file of the content data retrieval process must
+ * implement this interface.
  *
  * @author Kato Shinya
  * @since 1.0

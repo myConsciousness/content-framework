@@ -20,7 +20,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * コンテンツルートを管理するカタログです。
+ * The catalog that manages a content root.
  *
  * @author Kato Shinya
  * @since 1.0
@@ -30,18 +30,18 @@ import lombok.RequiredArgsConstructor;
 public enum ContentRoot implements BiCatalog<ContentRoot, String> {
 
     /**
-     * ルート
+     * The root ({@code "resource/content/"})
      */
     ROOT(0, "content/");
 
     /**
-     * コード値
+     * The code
      */
     @Getter
     private final int code;
 
     /**
-     * タグ
+     * The tag
      */
     @Getter
     private final String tag;
