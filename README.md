@@ -1,3 +1,8 @@
+![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
+![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.3-27ae60.svg?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
+![Java CI with Gradle](https://github.com/myConsciousness/content-framework/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=main)
+
 # Content Framework
 
 <!-- START doctoc -->
@@ -5,7 +10,8 @@
 
 ## What is it?
 
-**_Makes your code more flexible to changes._**
+**_Makes your code more flexible to changes._**</br>
+**_This framework can be used like `NoSql database` to just handle master data._**
 
 `Content Framework` was designed and created with the goal of creating a large amount of code that is flexible enough to respond to changes in value and behavioral specifications in the source code.
 
@@ -18,6 +24,7 @@ As a framework each procedure is designed to be easy to perform, and the impleme
 - Be more flexible code for specification changes
 - Possible to reuse common values and behaviors defined as content and rules
 - Possible to change the behavior without changing the source code directly
+- Light and optimized NoSql database for master data
 
 ## How To Use
 
