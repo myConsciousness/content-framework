@@ -7,6 +7,7 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [What is it?](#what-is-it)
@@ -50,7 +51,7 @@ As a framework each procedure is designed to be easy to perform, and the impleme
 <dependency>
   <groupId>org.thinkit.framework.content</groupId>
   <artifactId>content-framework</artifactId>
-  <version>v1.0.3</version>
+  <version>v1.0.4</version>
 </dependency>
 
 <servers>
@@ -77,7 +78,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.framework.content:content-framework:v1.0.3'
+    implementation 'org.thinkit.framework.content:content-framework:v1.0.4'
 }
 ```
 
