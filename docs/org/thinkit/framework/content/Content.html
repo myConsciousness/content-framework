@@ -114,10 +114,10 @@ loadScripts(document, 'script');</script>
 </td>
 </tr>
 <tr class="row-color" id="i1">
-<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="Attribute.html" title="org.thinkit.framework.content内のインタフェース">Attribute</a>&gt;</code></td>
+<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Set.html" title="java.util内のクラスまたはインタフェース" class="external-link">Set</a>&lt;<a href="Attribute.html" title="org.thinkit.framework.content内のインタフェース">Attribute</a>&gt;</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getAttributes()">getAttributes</a></span>()</code></th>
 <td class="col-last">
-<div class="block">Returns the list containing the name of the target attribute to be retrieved
+<div class="block">Returns the Set containing the name of the target attribute to be retrieved
  from the content file.</div>
 </td>
 </tr>
@@ -130,7 +130,7 @@ loadScripts(document, 'script');</script>
 </tr>
 <tr class="row-color" id="i3">
 <td class="col-first"><code>default <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&gt;</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#loadContent(java.lang.Class)">loadContent</a></span>&#8203;(@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Class.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Class</a>&lt;? extends <a href="Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a>&lt;<a href="Content.html" title="Content内の型パラメータ">R</a>&gt;&gt;&nbsp;content)</code></th>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#loadContent(org.thinkit.framework.content.Content)">loadContent</a></span>&#8203;(@NonNull <a href="Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a>&lt;<a href="Content.html" title="Content内の型パラメータ">R</a>&gt;&nbsp;content)</code></th>
 <td class="col-last">
 <div class="block">Refers to the content file associated with the content object passed as an
  argument and perform the loading process.</div>
@@ -154,12 +154,12 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getAttributes()">
 <h3>getAttributes</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="Attribute.html" title="org.thinkit.framework.content内のインタフェース">Attribute</a>&gt;</span>&nbsp;<span class="member-name">getAttributes</span>()</div>
-<div class="block">Returns the list containing the name of the target attribute to be retrieved
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Set.html" title="java.util内のクラスまたはインタフェース" class="external-link">Set</a>&lt;<a href="Attribute.html" title="org.thinkit.framework.content内のインタフェース">Attribute</a>&gt;</span>&nbsp;<span class="member-name">getAttributes</span>()</div>
+<div class="block">Returns the Set containing the name of the target attribute to be retrieved
  from the content file.</div>
 <dl class="notes">
 <dt>戻り値:</dt>
-<dd>The list containing the name of the target attribute to be retrieved
+<dd>The Set containing the name of the target attribute to be retrieved
          from the content file</dd>
 </dl>
 </section>
@@ -189,10 +189,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="loadContent(java.lang.Class)">
+<section class="detail" id="loadContent(org.thinkit.framework.content.Content)">
 <h3>loadContent</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&gt;</span>&nbsp;<span class="member-name">loadContent</span>&#8203;(<span class="parameters">@NonNull
-@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Class.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Class</a>&lt;? extends <a href="Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a>&lt;<a href="Content.html" title="Content内の型パラメータ">R</a>&gt;&gt;&nbsp;content)</span></div>
+@NonNull <a href="Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a>&lt;<a href="Content.html" title="Content内の型パラメータ">R</a>&gt;&nbsp;content)</span></div>
 <div class="block">Refers to the content file associated with the content object passed as an
  argument and perform the loading process.</div>
 <dl class="notes">

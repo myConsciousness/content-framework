@@ -15,8 +15,8 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":6};
-var tabs = {65535:["t0","\u3059\u3079\u3066\u306E\u30E1\u30BD\u30C3\u30C9"],2:["t2","\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u30FB\u30E1\u30BD\u30C3\u30C9"],4:["t3","abstract\u30E1\u30BD\u30C3\u30C9"]};
+<script type="text/javascript">var data = {"i0":38};
+var tabs = {65535:["t0","\u3059\u3079\u3066\u306E\u30E1\u30BD\u30C3\u30C9"],2:["t2","\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u30FB\u30E1\u30BD\u30C3\u30C9"],4:["t3","abstract\u30E1\u30BD\u30C3\u30C9"],32:["t6","\u63A8\u5968\u3055\u308C\u3066\u3044\u306A\u3044\u30E1\u30BD\u30C3\u30C9"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
 var tableTab = "table-tab";
@@ -77,7 +77,13 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="description">
 <hr>
-<pre>public interface <span class="type-name-label">Rule&lt;R&gt;</span></pre>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Deprecated.html" title="java.lang内のクラスまたはインタフェース" class="external-link">@Deprecated</a>
+public interface <span class="type-name-label">Rule&lt;R&gt;</span></pre>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span>
+<div class="deprecation-comment">This class was provided as a layer to process values retrieved
+             from content, but it was deprecated due to its limited use and
+             redundancy.</div>
+</div>
 <div class="block">An interface that abstracts the rules of content.
  <p>
  When implementing the <a href="Rule.html" title="org.thinkit.framework.content.rule内のインタフェース"><code>Rule</code></a> interface, please specify the type of the
@@ -103,7 +109,7 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method.summary">
 <h2>メソッドの概要</h2>
 <div class="member-summary" id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">すべてのメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">インスタンス・メソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t3" class="table-tab" onclick="show(4);">abstractメソッド</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">すべてのメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">インスタンス・メソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t3" class="table-tab" onclick="show(4);">abstractメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t6" class="table-tab" onclick="show(32);">推奨されていないメソッド</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <table class="summary-table" aria-labelledby="t0">
 <thead>
@@ -118,6 +124,7 @@ loadScripts(document, 'script');</script>
 <td class="col-first"><code><a href="Rule.html" title="Rule内の型パラメータ">R</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#execute()">execute</a></span>()</code></th>
 <td class="col-last">
+<div class="block"><span class="deprecated-label">推奨されていません。</span></div>
 <div class="block">Search the content data and return as a result the data of the type specified
  in the generics.</div>
 </td>
@@ -141,6 +148,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="execute()">
 <h3>execute</h3>
 <div class="member-signature"><span class="return-type"><a href="Rule.html" title="Rule内の型パラメータ">R</a></span>&nbsp;<span class="member-name">execute</span>()</div>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span></div>
 <div class="block">Search the content data and return as a result the data of the type specified
  in the generics.
  <p>

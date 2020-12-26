@@ -112,6 +112,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/framework/content/rule/Rule.html#execute()">execute()</a></span> - インタフェース のメソッドorg.thinkit.framework.content.rule.<a href="org/thinkit/framework/content/rule/Rule.html" title="org.thinkit.framework.content.rule内のインタフェース">Rule</a></dt>
 <dd>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span></div>
 <div class="block">Search the content data and return as a result the data of the type specified
  in the generics.</div>
 </dd>
@@ -120,7 +121,7 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><span class="member-name-link"><a href="org/thinkit/framework/content/Content.html#getAttributes()">getAttributes()</a></span> - インタフェース のメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a></dt>
 <dd>
-<div class="block">Returns the list containing the name of the target attribute to be retrieved
+<div class="block">Returns the Set containing the name of the target attribute to be retrieved
  from the content file.</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/framework/content/catalog/ContentRoot.html#getCode()">getCode()</a></span> - 列挙 のメソッドorg.thinkit.framework.content.catalog.<a href="org/thinkit/framework/content/catalog/ContentRoot.html" title="org.thinkit.framework.content.catalog内の列挙型">ContentRoot</a></dt>
@@ -162,21 +163,23 @@ loadScripts(document, 'script');</script>
  <a href="org/thinkit/framework/content/Invokable.html#invoke()"><code>Invokable.invoke()</code></a> method.</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/framework/content/rule/RuleInvoker.html#invoke()">invoke()</a></span> - クラス のメソッドorg.thinkit.framework.content.rule.<a href="org/thinkit/framework/content/rule/RuleInvoker.html" title="org.thinkit.framework.content.rule内のクラス">RuleInvoker</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span></div>
+&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
-<dt><span class="member-name-link"><a href="org/thinkit/framework/content/ContentLoader.html#load(java.io.InputStream,java.util.List)">load(InputStream, List&lt;String&gt;)</a></span> - クラス のstaticメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/ContentLoader.html" title="org.thinkit.framework.content内のクラス">ContentLoader</a></dt>
+<dt><span class="member-name-link"><a href="org/thinkit/framework/content/ContentLoader.html#load(java.io.InputStream,java.util.Set)">load(InputStream, Set&lt;String&gt;)</a></span> - クラス のstaticメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/ContentLoader.html" title="org.thinkit.framework.content内のクラス">ContentLoader</a></dt>
 <dd>
 <div class="block">Gets each element defined in the content file specified as an argument and
  return it as List.</div>
 </dd>
-<dt><span class="member-name-link"><a href="org/thinkit/framework/content/ContentLoader.html#load(java.io.InputStream,java.util.List,java.util.Map)">load(InputStream, List&lt;String&gt;, Map&lt;String, String&gt;)</a></span> - クラス のstaticメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/ContentLoader.html" title="org.thinkit.framework.content内のクラス">ContentLoader</a></dt>
+<dt><span class="member-name-link"><a href="org/thinkit/framework/content/ContentLoader.html#load(java.io.InputStream,java.util.Set,java.util.Map)">load(InputStream, Set&lt;String&gt;, Map&lt;String, String&gt;)</a></span> - クラス のstaticメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/ContentLoader.html" title="org.thinkit.framework.content内のクラス">ContentLoader</a></dt>
 <dd>
 <div class="block">Gets each element defined in the content file specified and return it as a
  list.</div>
 </dd>
-<dt><span class="member-name-link"><a href="org/thinkit/framework/content/Content.html#loadContent(java.lang.Class)">loadContent(Class&lt;? extends Content&lt;R&gt;&gt;)</a></span> - インタフェース のメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a></dt>
+<dt><span class="member-name-link"><a href="org/thinkit/framework/content/Content.html#loadContent(org.thinkit.framework.content.Content)">loadContent(Content&lt;R&gt;)</a></span> - インタフェース のメソッドorg.thinkit.framework.content.<a href="org/thinkit/framework/content/Content.html" title="org.thinkit.framework.content内のインタフェース">Content</a></dt>
 <dd>
 <div class="block">Refers to the content file associated with the content object passed as an
  argument and perform the loading process.</div>
@@ -191,19 +194,31 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/framework/content/rule/RuleInvoker.html#of(org.thinkit.framework.content.rule.Rule)">of(Rule&lt;R&gt;)</a></span> - クラス のstaticメソッドorg.thinkit.framework.content.rule.<a href="org/thinkit/framework/content/rule/RuleInvoker.html" title="org.thinkit.framework.content.rule内のクラス">RuleInvoker</a></dt>
 <dd>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span></div>
 <div class="block">Returns the new instance of the <a href="org/thinkit/framework/content/rule/RuleInvoker.html" title="org.thinkit.framework.content.rule内のクラス"><code>RuleInvoker</code></a> class based on the
  <code>Rule</code> object specified as an argument.</div>
 </dd>
 <dt><a href="org/thinkit/framework/content/package-summary.html">org.thinkit.framework.content</a> - パッケージ org.thinkit.framework.content</dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The package manages the classes that are the core of the content framework.</div>
+</dd>
 <dt><a href="org/thinkit/framework/content/annotation/package-summary.html">org.thinkit.framework.content.annotation</a> - パッケージ org.thinkit.framework.content.annotation</dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The package manages the annotations used by the content framework.</div>
+</dd>
 <dt><a href="org/thinkit/framework/content/catalog/package-summary.html">org.thinkit.framework.content.catalog</a> - パッケージ org.thinkit.framework.content.catalog</dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The package manages the catalogs used by the content framework.</div>
+</dd>
 <dt><a href="org/thinkit/framework/content/entity/package-summary.html">org.thinkit.framework.content.entity</a> - パッケージ org.thinkit.framework.content.entity</dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The package manages the entity used in the content framework.</div>
+</dd>
 <dt><a href="org/thinkit/framework/content/rule/package-summary.html">org.thinkit.framework.content.rule</a> - パッケージ org.thinkit.framework.content.rule</dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">This package was provided as a layer to process values retrieved from
+ content, but it was deprecated due to its limited use and redundancy.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
@@ -213,12 +228,19 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/thinkit/framework/content/rule/Rule.html" title="org.thinkit.framework.content.rule内のインタフェース"><span class="type-name-link">Rule</span></a>&lt;<a href="org/thinkit/framework/content/rule/Rule.html" title="Rule内の型パラメータ">R</a>&gt; - <a href="org/thinkit/framework/content/rule/package-summary.html">org.thinkit.framework.content.rule</a>のインタフェース</dt>
 <dd>
-<div class="block">An interface that abstracts the rules of content.</div>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span>
+<div class="deprecation-comment">This class was provided as a layer to process values retrieved
+             from content, but it was deprecated due to its limited use and
+             redundancy.</div>
+</div>
 </dd>
 <dt><a href="org/thinkit/framework/content/rule/RuleInvoker.html" title="org.thinkit.framework.content.rule内のクラス"><span class="type-name-link">RuleInvoker</span></a>&lt;<a href="org/thinkit/framework/content/rule/RuleInvoker.html" title="RuleInvoker内の型パラメータ">R</a>&gt; - <a href="org/thinkit/framework/content/rule/package-summary.html">org.thinkit.framework.content.rule</a>のクラス</dt>
 <dd>
-<div class="block">A rule invoking class that makes a safe call to the concrete rule class that
- implements the <a href="org/thinkit/framework/content/rule/Rule.html" title="org.thinkit.framework.content.rule内のインタフェース"><code>Rule</code></a> interface.</div>
+<div class="deprecation-block"><span class="deprecated-label">推奨されていません。</span>
+<div class="deprecation-comment">This class was provided as a layer to process values retrieved
+             from content, but it was deprecated due to its limited use and
+             redundancy.</div>
+</div>
 </dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
