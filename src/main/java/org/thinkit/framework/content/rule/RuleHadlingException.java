@@ -18,9 +18,13 @@ package org.thinkit.framework.content.rule;
  * Thrown to indicate that an incorrect operation or incorrect value has been
  * detected when performing rule processing.
  *
+ * @deprecated This class was provided as a layer to process values retrieved
+ *             from content, but it was deprecated due to its limited use and
+ *             redundancy.
  * @author Kato Shinya
  * @since 1.0.0
  */
+@Deprecated
 final class RuleHandlingException extends RuntimeException {
 
     /**

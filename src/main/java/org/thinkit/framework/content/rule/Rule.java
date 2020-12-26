@@ -29,9 +29,13 @@ package org.thinkit.framework.content.rule;
  * </code>
  * </pre>
  *
+ * @deprecated This class was provided as a layer to process values retrieved
+ *             from content, but it was deprecated due to its limited use and
+ *             redundancy.
  * @author Kato Shinya
  * @since 1.0.0
  */
+@Deprecated
 public interface Rule<R> {
 
     /**

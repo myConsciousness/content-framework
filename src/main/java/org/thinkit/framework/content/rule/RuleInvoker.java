@@ -22,9 +22,13 @@ import lombok.NonNull;
  * A rule invoking class that makes a safe call to the concrete rule class that
  * implements the {@link Rule} interface.
  *
+ * @deprecated This class was provided as a layer to process values retrieved
+ *             from content, but it was deprecated due to its limited use and
+ *             redundancy.
  * @author Kato Shinya
  * @since 1.0.0
  */
+@Deprecated
 public final class RuleInvoker<R> implements Invokable<R> {
 
     /**
