@@ -34,14 +34,14 @@ import lombok.NonNull;
  * The class that defines the process of loading the content data based on the
  * specified content definition.
  * <p>
- * It provides a {@link #load(InputStream, List)} method to load content data
- * without conditions, and a {@link #load(InputStream, List, Map)} method to
- * load content data with conditions.
+ * It provides a {@link #load(InputStream, Set)} method to load content data
+ * without conditions, and a {@link #load(InputStream, Set, Map)} method to load
+ * content data with conditions.
  * <p>
  * If the value of {@code "conditionId"} defined in the content is an empty
  * string, the record will be loaded unconditionally. If you have defined a
  * value for the conditionId of the content, be sure to define a condition for
- * the content and call {@link #load(InputStream, List, Map)}.
+ * the content and call {@link #load(InputStream, Set, Map)}.
  *
  * <pre>
  * If the condition is not specified:
@@ -68,7 +68,7 @@ public final class ContentLoader {
      * Gets each element defined in the content file specified as an argument and
      * return it as List.
      * <p>
-     * Use this {@link ContentLoader#load(InputStream, List)} method if there are no
+     * Use this {@link ContentLoader#load(InputStream, Set)} method if there are no
      * fetch conditions in the content definition.
      *
      * <pre>
@@ -94,7 +94,7 @@ public final class ContentLoader {
      * Gets each element defined in the content file specified and return it as a
      * list.
      * <p>
-     * Use this {@link ContentLoader#load(InputStream, List, Map)} method if there
+     * Use this {@link ContentLoader#load(InputStream, Set, Map)} method if there
      * are no acquisition conditions in the content definition.
      *
      * <pre>
