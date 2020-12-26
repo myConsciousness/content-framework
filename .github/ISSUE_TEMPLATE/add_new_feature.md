@@ -1,11 +1,11 @@
 ---
-name: Feature Request
-about: I have a good idea.
-labels: "Feedback: new feature"
+name: Add New Feature
+about: I have a good idea for a new feature.
+labels: "Type: new feature"
 assignees: "myConsciousness"
 ---
 
-# Feature Request
+# Add New Feature
 
 ## 1. Feature details
 
