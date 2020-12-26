@@ -84,7 +84,7 @@ public final class ContentLoader {
      * @exception IllegalArgumentException If the attribute list is empty
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
-            @NonNull final List<String> attributes) {
+            @NonNull final Set<String> attributes) {
         Preconditions.requireNonEmpty(attributes);
 
         return load(contentStream, attributes, new HashMap<>(0));
@@ -112,7 +112,7 @@ public final class ContentLoader {
      * @exception IllegalArgumentException If the attribute list is empty
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
-            @NonNull List<String> attributes, @NonNull final Map<String, String> conditions) {
+            @NonNull Set<String> attributes, @NonNull final Map<String, String> conditions) {
         Preconditions.requireNonEmpty(attributes);
 
         final Map<String, Object> rawContent = getContent(contentStream);
@@ -218,7 +218,7 @@ public final class ContentLoader {
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
-    private static List<Map<String, String>> getContentList(@NonNull List<String> attributes,
+    private static List<Map<String, String>> getContentList(@NonNull Set<String> attributes,
             @NonNull Map<String, Object> rawContent, @NonNull List<String> conditionIdList) {
 
         final List<Map<String, String>> contentList = new ArrayList<>(0);
@@ -226,12 +226,13 @@ public final class ContentLoader {
 
         for (Map<String, Object> nodeList : selectionNodes) {
             final Map<String, Object> nodeMap = getNodeMap(nodeList, SelectionNodeKey.NODE);
-            final Map<String, String> content = new HashMap<>(0);
             final String conditionId = getString(nodeMap, SelectionNodeKey.CONDITION_ID);
 
             if (!StringUtils.isEmpty(conditionId) && !conditionIdList.contains(conditionId)) {
                 continue;
             }
+
+            final Map<String, String> content = new HashMap<>(0);
 
             for (String attribute : attributes) {
                 content.put(attribute, getString(nodeMap, attribute));

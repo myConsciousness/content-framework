@@ -25,9 +25,11 @@ import org.thinkit.framework.content.catalog.ContentRoot;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Nested;
@@ -45,19 +47,19 @@ public final class ContentLoaderTest {
     /**
      * テスト用アトリビュートリスト
      */
-    private static final List<String> TEST_ATTRIBUTE_LIST;
+    private static final Set<String> TEST_ATTRIBUTE_SET;
 
     static {
         final TestContentAttribute[] attributes = TestContentAttribute.values();
-        TEST_ATTRIBUTE_LIST = new ArrayList<>(attributes.length);
+        TEST_ATTRIBUTE_SET = new HashSet<>(attributes.length);
 
         for (Attribute attribute : attributes) {
-            TEST_ATTRIBUTE_LIST.add(attribute.getString());
+            TEST_ATTRIBUTE_SET.add(attribute.getString());
         }
     }
 
     /**
-     * {@link ContentLoader#load(String, List)} メソッドのテストメソッドを定義するネストクラスです。
+     * {@link ContentLoader#load(String, Set)} メソッドのテストメソッドを定義するネストクラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -69,14 +71,14 @@ public final class ContentLoaderTest {
         /**
          * <pre>
          * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List)} メソッドの返却値を確認する。
+         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set)} メソッドの返却値を確認する。
          * このテストでは選択ノードの個数が小規模のコンテンツファイルを使用する。
          * </pre>
          *
          * <pre>
          * ❏ 観点
-         * ・{@link ContentLoader#load(String, List)} から取得したリストが {@code null} ではないこと
-         * ・{@link ContentLoader#load(String, List)} から取得したリストが空リストではないこと
+         * ・{@link ContentLoader#load(String, Set)} から取得したリストが {@code null} ではないこと
+         * ・{@link ContentLoader#load(String, Set)} から取得したリストが空リストではないこと
          * ・キー名 <code>"test1"</code> に紐づく項目の値が <code>"0"</code> であること
          * ・キー名 <code>"test2"</code> に紐づく項目の値が <code>"false"</code> であること
          * ・キー名 <code>"test3"</code> に紐づく項目の値が <code>"0L"</code> であること
@@ -93,7 +95,7 @@ public final class ContentLoaderTest {
         public void testSmallSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(getResourceAsStream(TestContentName.SMALL_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_LIST);
+                    .load(getResourceAsStream(TestContentName.SMALL_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_SET);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -110,14 +112,14 @@ public final class ContentLoaderTest {
         /**
          * <pre>
          * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List)} メソッドの返却値を確認する。
+         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set)} メソッドの返却値を確認する。
          * このテストでは選択ノードの個数が中規模のコンテンツファイルを使用する。
          * </pre>
          *
          * <pre>
          * ❏ 観点
-         * ・{@link ContentLoader#load(String, List)} から取得したリストが {@code null} ではないこと
-         * ・{@link ContentLoader#load(String, List)} から取得したリストが空リストではないこと
+         * ・{@link ContentLoader#load(String, Set)} から取得したリストが {@code null} ではないこと
+         * ・{@link ContentLoader#load(String, Set)} から取得したリストが空リストではないこと
          * ・キー名 <code>"test1"</code> に紐づく項目の値が <code>"0"</code> であること
          * ・キー名 <code>"test2"</code> に紐づく項目の値が <code>"false"</code> であること
          * ・キー名 <code>"test3"</code> に紐づく項目の値が <code>"0L"</code> であること
@@ -134,7 +136,7 @@ public final class ContentLoaderTest {
         public void testMediumSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(getResourceAsStream(TestContentName.MEDIUM_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_LIST);
+                    .load(getResourceAsStream(TestContentName.MEDIUM_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_SET);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -151,14 +153,14 @@ public final class ContentLoaderTest {
         /**
          * <pre>
          * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List)} メソッドの返却値を確認する。
+         * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set)} メソッドの返却値を確認する。
          * このテストでは選択ノードの個数が大規模のコンテンツファイルを使用する。
          * </pre>
          *
          * <pre>
          * ❏ 観点
-         * ・{@link ContentLoader#load(String, List)} から取得したリストが {@code null} ではないこと
-         * ・{@link ContentLoader#load(String, List)} から取得したリストが空リストではないこと
+         * ・{@link ContentLoader#load(String, Set)} から取得したリストが {@code null} ではないこと
+         * ・{@link ContentLoader#load(String, Set)} から取得したリストが空リストではないこと
          * ・キー名 <code>"test1"</code> に紐づく項目の値が <code>"0"</code> であること
          * ・キー名 <code>"test2"</code> に紐づく項目の値が <code>"false"</code> であること
          * ・キー名 <code>"test3"</code> に紐づく項目の値が <code>"0L"</code> であること
@@ -175,7 +177,7 @@ public final class ContentLoaderTest {
         public void testLargeSelectionNodes() {
 
             final List<Map<String, String>> contents = ContentLoader
-                    .load(getResourceAsStream(TestContentName.LARGE_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_LIST);
+                    .load(getResourceAsStream(TestContentName.LARGE_SELECTION_NODES.getPath()), TEST_ATTRIBUTE_SET);
 
             assertNotNull(contents);
             assertTrue(!contents.isEmpty());
@@ -191,7 +193,7 @@ public final class ContentLoaderTest {
     }
 
     /**
-     * {@link ContentLoader#load(String, List, Map)} メソッドのテストメソッドを定義するネストクラスです。
+     * {@link ContentLoader#load(String, Set, Map)} メソッドのテストメソッドを定義するネストクラスです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -201,7 +203,7 @@ public final class ContentLoaderTest {
     final class TestLoadWithConditions {
 
         /**
-         * {@link ContentLoader#load(String, List, Map)} メソッドのテストメソッドを定義するネストクラスです。
+         * {@link ContentLoader#load(String, Set, Map)} メソッドのテストメソッドを定義するネストクラスです。
          * このクラスに定義するテストメソッドは小規模条件ノードを定義したコンテンツファイルを使用してください。
          *
          * @author Kato Shinya
@@ -214,15 +216,15 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が小規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
              * ・以下の条件でコンテンツをロードした場合 <code>"result"</code> に紐づく値が <code>"1"</code> であること
              * </pre>
              *
@@ -241,7 +243,7 @@ public final class ContentLoaderTest {
             public void testWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -260,15 +262,15 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が小規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
              * ・以下の条件でコンテンツをロードした場合 <code>"result"</code> に紐づく値が <code>"0"</code> であること
              * </pre>
              *
@@ -287,7 +289,7 @@ public final class ContentLoaderTest {
             public void testAnotherRecordWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -306,14 +308,14 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が小規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストであること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストであること
              * </pre>
              *
              * <pre>
@@ -331,7 +333,7 @@ public final class ContentLoaderTest {
             public void testNoRecordWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -347,7 +349,7 @@ public final class ContentLoaderTest {
         }
 
         /**
-         * {@link ContentLoader#load(String, List, Map)} メソッドのテストメソッドを定義するネストクラスです。
+         * {@link ContentLoader#load(String, Set, Map)} メソッドのテストメソッドを定義するネストクラスです。
          * このクラスに定義するテストメソッドは中規模条件ノードを定義したコンテンツファイルを使用してください。
          *
          * @author Kato Shinya
@@ -360,15 +362,15 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が中規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
              * ・以下の条件でコンテンツをロードした場合 <code>"result"</code> に紐づく値が <code>"1"</code> であること
              * </pre>
              *
@@ -389,7 +391,7 @@ public final class ContentLoaderTest {
             public void testWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -410,15 +412,15 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が中規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
              * ・以下の条件でコンテンツをロードした場合 <code>"result"</code> に紐づく値が <code>"3"</code> であること
              * </pre>
              *
@@ -439,7 +441,7 @@ public final class ContentLoaderTest {
             public void testAnotherRecordWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -460,14 +462,14 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が中規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストであること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストであること
              * </pre>
              *
              * <pre>
@@ -487,7 +489,7 @@ public final class ContentLoaderTest {
             public void testNoRecordWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -505,7 +507,7 @@ public final class ContentLoaderTest {
         }
 
         /**
-         * {@link ContentLoader#load(String, List, Map)} メソッドのテストメソッドを定義するネストクラスです。
+         * {@link ContentLoader#load(String, Set, Map)} メソッドのテストメソッドを定義するネストクラスです。
          * このクラスに定義するテストメソッドは大規模条件ノードを定義したコンテンツファイルを使用してください。
          *
          * @author Kato Shinya
@@ -518,15 +520,15 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が大規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
              * ・以下の条件でコンテンツをロードした場合 <code>"result"</code> に紐づく値が <code>"5"</code> であること
              * </pre>
              *
@@ -549,7 +551,7 @@ public final class ContentLoaderTest {
             public void testWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -572,15 +574,15 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が大規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} メソッドから取得したリストのサイズが <code>1</code> であること
              * ・以下の条件でコンテンツをロードした場合 <code>"result"</code> に紐づく値が <code>"6"</code> であること
              * </pre>
              *
@@ -603,7 +605,7 @@ public final class ContentLoaderTest {
             public void testAnotherRecordWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -626,14 +628,14 @@ public final class ContentLoaderTest {
             /**
              * <pre>
              * ❏ 概要
-             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, List, Map)} メソッドの返却値を確認する。
+             * {@link ContentLoader} クラスの {@link ContentLoader#load(String, Set, Map)} メソッドの返却値を確認する。
              * このテストでは条件ノードの個数が大規模のコンテンツファイルを使用する。
              * </pre>
              *
              * <pre>
              * ❏ 観点
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが {@code null} ではないこと
-             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, List, Map)} から取得したリストが空リストであること
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが {@code null} ではないこと
+             * ・以下の条件でコンテンツをロードした場合 {@link ContentLoader#load(String, Set, Map)} から取得したリストが空リストであること
              * </pre>
              *
              * <pre>
@@ -655,7 +657,7 @@ public final class ContentLoaderTest {
             public void testNoRecordWithConditions() {
 
                 final String resultAttribute = "result";
-                final List<String> attributes = new ArrayList<>(1);
+                final Set<String> attributes = new HashSet<>(1);
                 attributes.add(resultAttribute);
 
                 final Map<String, String> conditions = new HashMap<>(2);
@@ -870,9 +872,9 @@ public final class ContentLoaderTest {
     }
 
     /**
-     * {@link ContentLoader#getContentList(List, Map, List)}
+     * {@link ContentLoader#getContentList(Set, Map, List)}
      * メソッドのテストメソッドを定義するテストクラスです。
-     * {@link ContentLoader#getContentList(List, Map, List)} はprivateメソッドです。
+     * {@link ContentLoader#getContentList(Set, Map, List)} はprivateメソッドです。
      *
      * @author Kato Shinya
      * @since 1.0
@@ -884,20 +886,20 @@ public final class ContentLoaderTest {
         /**
          * <pre>
          * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#getContentList(List, Map, List)} メソッドの返却値を確認する。
+         * {@link ContentLoader} クラスの {@link ContentLoader#getContentList(Set, Map, List)} メソッドの返却値を確認する。
          * このテストではコンテンツ定義の全ノードにconditionIdの値が設定されている場合を想定して行う。
          * conditionIdが <code>"1"</code> のレコードを取得しテストを行う。
          * </pre>
          *
          * <pre>
          * ❏ 観点
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値が {@code null} ではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値が空リストではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値のサイズが <code>1</code> であること
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の0番インデックスに紐づくレコードが {@code null} ではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の0番インデックスに紐づくレコードが空マップではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の0番インデックスに紐づくレコードのサイズが <code>3</code> であること
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の0番インデックスに紐づくレコードの値が全て <code>"something1"</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値が {@code null} ではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値が空リストではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値のサイズが <code>1</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の0番インデックスに紐づくレコードが {@code null} ではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の0番インデックスに紐づくレコードが空マップではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の0番インデックスに紐づくレコードのサイズが <code>3</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の0番インデックスに紐づくレコードの値が全て <code>"something1"</code> であること
          * </pre>
          *
          * <pre>
@@ -907,7 +909,7 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWithConditionId() {
-            final List<String> attributes = new ArrayList<>(3);
+            final Set<String> attributes = new HashSet<>(3);
             attributes.add(TestContentAttribute.test1.getString());
             attributes.add(TestContentAttribute.test2.getString());
             attributes.add(TestContentAttribute.test3.getString());
@@ -935,7 +937,7 @@ public final class ContentLoaderTest {
             conditionIdList.add("1");
 
             final FluentReflection<List<Map<String, String>>> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(List.class, attributes).add(Map.class, selectionNodes).add(List.class, conditionIdList);
+            reflection.add(Set.class, attributes).add(Map.class, selectionNodes).add(List.class, conditionIdList);
             final List<Map<String, String>> actualContentList = reflection.invokeStatic("getContentList");
 
             final Map<String, String> actualRecord = actualContentList.get(0);
@@ -954,19 +956,19 @@ public final class ContentLoaderTest {
         /**
          * <pre>
          * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#getContentList(List, Map, List)} メソッドの返却値を確認する。
+         * {@link ContentLoader} クラスの {@link ContentLoader#getContentList(Set, Map, List)} メソッドの返却値を確認する。
          * このテストではコンテンツ定義の全ノードにconditionIdの値が設定されていない場合を想定して行う。
          * </pre>
          *
          * <pre>
          * ❏ 観点
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値が {@code null} ではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値が空リストではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値のサイズが <code>5</code> であること
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードが {@code null} ではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードが空マップではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードのサイズが <code>5</code> であること
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードの値が全て生成した期待値と等価であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値が {@code null} ではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値が空リストではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値のサイズが <code>5</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードが {@code null} ではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードが空マップではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードのサイズが <code>5</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードの値が全て生成した期待値と等価であること
          * </pre>
          *
          * <pre>
@@ -976,7 +978,7 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWithNoConditionId() {
-            final List<String> attributes = new ArrayList<>(5);
+            final Set<String> attributes = new HashSet<>(5);
             attributes.add(TestContentAttribute.test1.getString());
             attributes.add(TestContentAttribute.test2.getString());
             attributes.add(TestContentAttribute.test3.getString());
@@ -1005,7 +1007,7 @@ public final class ContentLoaderTest {
             selectionNodes.put(SelectionNodeKey.SELECTION_NODES.getKey(), selectionNodesList);
 
             final FluentReflection<List<Map<String, String>>> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(List.class, attributes).add(Map.class, selectionNodes).add(List.class, new ArrayList<>(0));
+            reflection.add(Set.class, attributes).add(Map.class, selectionNodes).add(List.class, new ArrayList<>(0));
             final List<Map<String, String>> actualContentList = reflection.invokeStatic("getContentList");
 
             assertNotNull(actualContentList);
@@ -1030,19 +1032,19 @@ public final class ContentLoaderTest {
         /**
          * <pre>
          * ❏ 概要
-         * {@link ContentLoader} クラスの {@link ContentLoader#getContentList(List, Map, List)} メソッドの返却値を確認する。
+         * {@link ContentLoader} クラスの {@link ContentLoader#getContentList(Set, Map, List)} メソッドの返却値を確認する。
          * このテストではコンテンツ定義のノードにconditionIdの値が設定されているレコードと設定されていないレコードが存在する場合を想定して行う。
          * </pre>
          *
          * <pre>
          * ❏ 観点
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値が {@code null} ではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値が空リストではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の返却値のサイズが <code>7</code> であること
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードが {@code null} ではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードが空マップではないこと
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードのサイズが <code>5</code> であること
-         * ・{@link ContentLoader#getContentList(List, Map, List)} の各インデックスに紐づくレコードの値が全て生成した期待値と等価であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値が {@code null} ではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値が空リストではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の返却値のサイズが <code>7</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードが {@code null} ではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードが空マップではないこと
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードのサイズが <code>5</code> であること
+         * ・{@link ContentLoader#getContentList(Set, Map, List)} の各インデックスに紐づくレコードの値が全て生成した期待値と等価であること
          * </pre>
          *
          * <pre>
@@ -1052,7 +1054,7 @@ public final class ContentLoaderTest {
          */
         @Test
         public void testWithConditionIdAndNoConditionId() {
-            final List<String> attributes = new ArrayList<>(5);
+            final Set<String> attributes = new HashSet<>(5);
             attributes.add(TestContentAttribute.test1.getString());
             attributes.add(TestContentAttribute.test2.getString());
             attributes.add(TestContentAttribute.test3.getString());
@@ -1090,7 +1092,7 @@ public final class ContentLoaderTest {
             conditionIdList.add("7");
 
             final FluentReflection<List<Map<String, String>>> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(List.class, attributes).add(Map.class, selectionNodes).add(List.class, conditionIdList);
+            reflection.add(Set.class, attributes).add(Map.class, selectionNodes).add(List.class, conditionIdList);
             final List<Map<String, String>> actualContentList = reflection.invokeStatic("getContentList");
 
             assertNotNull(actualContentList);
@@ -1123,9 +1125,9 @@ public final class ContentLoaderTest {
     }
 
     /**
-     * {@link ContentLoader#getContentList(List, Map, List)}
+     * {@link ContentLoader#getContentList(Set, Map, List)}
      * メソッドのテストメソッドを定義するテストクラスです。
-     * {@link ContentLoader#getContentList(List, Map, List)} はprivateメソッドです。
+     * {@link ContentLoader#getContentList(Set, Map, List)} はprivateメソッドです。
      *
      * @author Kato Shinya
      * @since 1.0

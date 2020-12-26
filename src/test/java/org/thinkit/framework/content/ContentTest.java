@@ -16,8 +16,8 @@ package org.thinkit.framework.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -58,9 +58,9 @@ public final class ContentTest implements Content<ContentEntityForTest> {
     }
 
     @Override
-    public List<Attribute> getAttributes() {
+    public Set<Attribute> getAttributes() {
         // do nothing
-        return List.of();
+        return Set.of();
     }
 
     @Override

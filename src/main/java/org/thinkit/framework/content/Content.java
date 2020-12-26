@@ -17,6 +17,7 @@ package org.thinkit.framework.content;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.thinkit.common.base.precondition.Preconditions;
@@ -39,13 +40,13 @@ import lombok.NonNull;
 public interface Content<R extends ContentEntity> {
 
     /**
-     * Returns the list containing the name of the target attribute to be retrieved
+     * Returns the Set containing the name of the target attribute to be retrieved
      * from the content file.
      *
-     * @return The list containing the name of the target attribute to be retrieved
+     * @return The Set containing the name of the target attribute to be retrieved
      *         from the content file
      */
-    public List<Attribute> getAttributes();
+    public Set<Attribute> getAttributes();
 
     /**
      * Returns the map containing the conditions for get the content.
@@ -78,10 +79,11 @@ public interface Content<R extends ContentEntity> {
      *                                  {@link #getAttributes()} method is an empty
      *                                  list
      */
-    default List<Map<String, String>> loadContent(@NonNull Class<? extends Content<R>> content) {
+    default List<Map<String, String>> loadContent(@NonNull Content<R> content) {
 
-        final ContentMapping mapping = content.getAnnotation(ContentMapping.class);
-        final List<Attribute> attributes = this.getAttributes();
+        final Class<?> contentClass = content.getClass();
+        final ContentMapping mapping = contentClass.getAnnotation(ContentMapping.class);
+        final Set<Attribute> attributes = this.getAttributes();
         final Map<Condition, String> conditions = this.getConditions();
 
         Preconditions.requireNonNull(mapping);
@@ -89,9 +91,9 @@ public interface Content<R extends ContentEntity> {
         Preconditions.requireNonEmpty(attributes);
 
         final List<Map<String, String>> contents = ContentLoader.load(
-                content.getClassLoader()
+                contentClass.getClassLoader()
                         .getResourceAsStream(ContentRoot.ROOT.getTag() + mapping.content() + Extension.json()),
-                attributes.stream().map(Attribute::getString).collect(Collectors.toList()),
+                attributes.stream().map(Attribute::getString).collect(Collectors.toSet()),
                 conditions == null ? new HashMap<>(0)
                         : conditions.entrySet().stream()
                                 .collect(Collectors.toMap(e -> e.getKey().getString(), e -> e.getValue())));
