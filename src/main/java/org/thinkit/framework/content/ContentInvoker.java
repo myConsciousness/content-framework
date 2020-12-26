@@ -23,8 +23,7 @@ import lombok.NonNull;
  * class that implements the {@link Content} interface.
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 public final class ContentInvoker<R extends ContentEntity> implements Invokable<R> {
 

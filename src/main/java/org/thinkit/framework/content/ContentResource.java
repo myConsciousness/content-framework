@@ -18,8 +18,7 @@ package org.thinkit.framework.content;
  * The interface is an abstraction of content resources.
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 public interface ContentResource {
 

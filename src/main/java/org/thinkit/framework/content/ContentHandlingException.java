@@ -19,8 +19,7 @@ package org.thinkit.framework.content;
  * detected when performing rule processing.
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 final class ContentHandlingException extends RuntimeException {
 
@@ -58,7 +57,6 @@ final class ContentHandlingException extends RuntimeException {
      *                {@link Throwable#getCause()} method). (A <tt>null</tt> value
      *                is permitted, and indicates that the cause is nonexistent or
      *                unknown.)
-     * @since 1.0
      */
     public ContentHandlingException(String message, Throwable cause) {
         super(message, cause);
@@ -75,7 +73,6 @@ final class ContentHandlingException extends RuntimeException {
      *              {@link Throwable#getCause()} method). (A <tt>null</tt> value is
      *              permitted, and indicates that the cause is nonexistent or
      *              unknown.)
-     * @since 1.0
      */
     public ContentHandlingException(Throwable cause) {
         super(cause);

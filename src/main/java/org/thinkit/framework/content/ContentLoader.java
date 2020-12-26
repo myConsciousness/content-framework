@@ -54,11 +54,7 @@ import lombok.NonNull;
  * </pre>
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
- *
- * @see #load(InputStream, List)
- * @see #load(InputStream, List, Map)
+ * @since 1.0.0
  */
 public final class ContentLoader {
 
@@ -98,7 +94,7 @@ public final class ContentLoader {
      * Gets each element defined in the content file specified and return it as a
      * list.
      * <p>
-     * コUse this {@link ContentLoader#load(InputStream, List, Map)} method if there
+     * Use this {@link ContentLoader#load(InputStream, List, Map)} method if there
      * are no acquisition conditions in the content definition.
      *
      * <pre>
@@ -170,8 +166,6 @@ public final class ContentLoader {
     /**
      * Returns a value of type string based on the content key specified as an
      * argument from the node map.
-     * <p>
-     * 引数として {@code null} が渡された場合は実行時に必ず失敗します。
      *
      * @param nodeMap    The node map
      * @param contentKey The content key

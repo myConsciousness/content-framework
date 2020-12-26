@@ -42,8 +42,7 @@ import lombok.Cleanup;
  * json形式のコンテンツを解析する場合は{@link ContentLoader}を使用してください。
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  * @deprecated
  */
 @Deprecated

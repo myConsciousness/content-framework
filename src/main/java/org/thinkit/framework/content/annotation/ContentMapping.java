@@ -14,6 +14,7 @@
 
 package org.thinkit.framework.content.annotation;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -23,9 +24,9 @@ import java.lang.annotation.Target;
  * It is an annotation that makes a mapping to a referenced content file.
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
+@Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ContentMapping {
