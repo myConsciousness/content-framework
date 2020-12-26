@@ -41,9 +41,10 @@ import lombok.Cleanup;
  * コンテンツファイルの管理方法がXMLからjsonへ変更したため{@link StaxContentHandler}は非推奨になりました。<br>
  * json形式のコンテンツを解析する場合は{@link ContentLoader}を使用してください。
  *
+ * @deprecated This class has been deprecated due to a change in the content
+ *             management method to JSON format.
  * @author Kato Shinya
  * @since 1.0.0
- * @deprecated
  */
 @Deprecated
 final class StaxContentHandler {
