@@ -16,6 +16,7 @@ package org.thinkit.framework.content;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -64,8 +65,8 @@ public final class ContentTest implements Content<ContentEntityForTest> {
     }
 
     @Override
-    public Map<Condition, String> getConditions() {
+    public List<Map<Condition, String>> getConditions() {
         // do nothing
-        return Map.of();
+        return List.of();
     }
 }

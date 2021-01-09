@@ -14,7 +14,7 @@
 
 package org.thinkit.framework.content;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -49,11 +49,11 @@ public interface Content<R extends ContentEntity> {
     public Set<Attribute> getAttributes();
 
     /**
-     * Returns the map containing the conditions for get the content.
+     * Returns the list containing the conditions for get the content.
      *
-     * @return The map containing the conditions for get the content
+     * @return The list containing the conditions for get the content
      */
-    public Map<Condition, String> getConditions();
+    public List<Map<Condition, String>> getConditions();
 
     /**
      * Returns the data got from the content as the data type specified when
@@ -84,7 +84,7 @@ public interface Content<R extends ContentEntity> {
         final Class<?> contentClass = content.getClass();
         final ContentMapping mapping = contentClass.getAnnotation(ContentMapping.class);
         final Set<Attribute> attributes = this.getAttributes();
-        final Map<Condition, String> conditions = this.getConditions();
+        final List<Map<Condition, String>> conditions = this.getConditions();
 
         Preconditions.requireNonNull(mapping);
         Preconditions.requireNonNull(attributes);
@@ -94,9 +94,7 @@ public interface Content<R extends ContentEntity> {
                 contentClass.getClassLoader()
                         .getResourceAsStream(ContentRoot.ROOT.getTag() + mapping.content() + Extension.json()),
                 attributes.stream().map(Attribute::getString).collect(Collectors.toSet()),
-                conditions == null ? new HashMap<>(0)
-                        : conditions.entrySet().stream()
-                                .collect(Collectors.toMap(e -> e.getKey().getString(), e -> e.getValue())));
+                conditions == null ? new ArrayList<>(0) : this.toStringConditions());
 
         if (contents.isEmpty()) {
             throw new ContentHandlingException(
@@ -104,5 +102,26 @@ public interface Content<R extends ContentEntity> {
         }
 
         return contents;
+    }
+
+    /**
+     * Converts the list of conditions obtained from the {@link #getConditions()}
+     * method into a suitable format as an argument of the
+     * {@link ContentLoader#load(java.io.InputStream, Set, List)} method and returns
+     * it.
+     *
+     * @return The converted condition list
+     */
+    private List<Map<String, String>> toStringConditions() {
+
+        final List<Map<String, String>> conditions = new ArrayList<>(0);
+
+        this.getConditions().forEach(condition -> {
+            condition.forEach((conditionKey, operand) -> {
+                conditions.add(Map.of(conditionKey.getString(), operand));
+            });
+        });
+
+        return conditions;
     }
 }

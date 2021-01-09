@@ -251,7 +251,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition2.getString(), "0");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -297,7 +298,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition2.getString(), "");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -341,7 +343,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition2.getString(), "");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.SMALL_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -401,7 +404,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition4.getString(), "テスト");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -451,7 +455,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition4.getString(), "true");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -499,7 +504,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition4.getString(), "テスト");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -563,7 +569,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.LARGE_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.LARGE_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -617,7 +624,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.LARGE_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.LARGE_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(!contents.isEmpty());
@@ -669,7 +677,8 @@ public final class ContentLoaderTest {
                 conditions.put(TestCondition.testCondition6.getString(), "10L");
 
                 final List<Map<String, String>> contents = ContentLoader.load(
-                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes, conditions);
+                        getResourceAsStream(TestContentName.MEDIUM_CONDITION_NODES.getPath()), attributes,
+                        List.of(conditions));
 
                 assertNotNull(contents);
                 assertTrue(contents.isEmpty());
@@ -1186,7 +1195,7 @@ public final class ContentLoaderTest {
             conditions.put(TestCondition.testCondition1.getString(), "1");
 
             final FluentReflection<List<String>> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(List.class, conditionNodes).add(Map.class, conditions);
+            reflection.add(List.class, conditionNodes).add(List.class, List.of(conditions));
             final List<String> actualConditionIdList = reflection.invokeStatic("getConditionIdList");
 
             assertNotNull(actualConditionIdList);
@@ -1249,7 +1258,7 @@ public final class ContentLoaderTest {
             conditions.put(TestCondition.testCondition3.getString(), "testValue42");
 
             final FluentReflection<List<String>> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(List.class, conditionNodes).add(Map.class, conditions);
+            reflection.add(List.class, conditionNodes).add(List.class, List.of(conditions));
             final List<String> actualConditionIdList = reflection.invokeStatic("getConditionIdList");
 
             assertNotNull(actualConditionIdList);
@@ -1319,7 +1328,7 @@ public final class ContentLoaderTest {
             conditions.put(TestCondition.testCondition10.getString(), "testValue79");
 
             final FluentReflection<List<String>> reflection = new FluentReflection<>(ContentLoader.class);
-            reflection.add(List.class, conditionNodes).add(Map.class, conditions);
+            reflection.add(List.class, conditionNodes).add(List.class, List.of(conditions));
             final List<String> actualConditionIdList = reflection.invokeStatic("getConditionIdList");
 
             assertNotNull(actualConditionIdList);

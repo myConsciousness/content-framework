@@ -28,6 +28,8 @@ import org.thinkit.common.base.precondition.Preconditions;
 import org.thinkit.common.util.FluentStreamReader;
 import org.thinkit.common.util.json.JsonConverter;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 /**
@@ -35,13 +37,13 @@ import lombok.NonNull;
  * specified content definition.
  * <p>
  * It provides a {@link #load(InputStream, Set)} method to load content data
- * without conditions, and a {@link #load(InputStream, Set, Map)} method to load
- * content data with conditions.
+ * without conditions, and a {@link #load(InputStream, Set, List)} method to
+ * load content data with conditions.
  * <p>
  * If the value of {@code "conditionId"} defined in the content is an empty
  * string, the record will be loaded unconditionally. If you have defined a
  * value for the conditionId of the content, be sure to define a condition for
- * the content and call {@link #load(InputStream, Set, Map)}.
+ * the content and call {@link #load(InputStream, Set, List)}.
  *
  * <pre>
  * If the condition is not specified:
@@ -56,13 +58,8 @@ import lombok.NonNull;
  * @author Kato Shinya
  * @since 1.0.0
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ContentLoader {
-
-    /**
-     * Default constructor
-     */
-    private ContentLoader() {
-    }
 
     /**
      * Gets each element defined in the content file specified as an argument and
@@ -87,14 +84,14 @@ public final class ContentLoader {
             @NonNull final Set<String> attributes) {
         Preconditions.requireNonEmpty(attributes);
 
-        return load(contentStream, attributes, new HashMap<>(0));
+        return load(contentStream, attributes, new ArrayList<>(0));
     }
 
     /**
      * Gets each element defined in the content file specified and return it as a
      * list.
      * <p>
-     * Use this {@link ContentLoader#load(InputStream, Set, Map)} method if there
+     * Use this {@link ContentLoader#load(InputStream, Set, List)} method if there
      * are no acquisition conditions in the content definition.
      *
      * <pre>
@@ -104,7 +101,7 @@ public final class ContentLoader {
      *
      * @param contentStream The stream of content file
      * @param attributes    The Attribute names to be acquired
-     * @param conditions    The conditional map to use when getting data from the
+     * @param conditions    The conditional list to use when getting data from the
      *                      content file
      * @return The List containing the elements retrieved from the content file
      *
@@ -112,7 +109,7 @@ public final class ContentLoader {
      * @exception IllegalArgumentException If the attribute list is empty
      */
     public static List<Map<String, String>> load(@NonNull final InputStream contentStream,
-            @NonNull Set<String> attributes, @NonNull final Map<String, String> conditions) {
+            @NonNull Set<String> attributes, @NonNull final List<Map<String, String>> conditions) {
         Preconditions.requireNonEmpty(attributes);
 
         final Map<String, Object> rawContent = getContent(contentStream);
@@ -254,25 +251,30 @@ public final class ContentLoader {
      * @exception NullPointerException If {@code null} is passed as an argument
      */
     private static List<String> getConditionIdList(@NonNull List<Map<String, Object>> conditionNodes,
-            @NonNull Map<String, String> conditions) {
+            @NonNull List<Map<String, String>> conditions) {
 
         final List<String> conditionIdList = new ArrayList<>(0);
 
-        for (Map<String, Object> nodeList : conditionNodes) {
-            final Map<String, Object> nodeMap = getNodeMap(nodeList, ConditionNodeKey.NODE);
-            final List<Map<String, Object>> conditionList = getNodeList(nodeMap, ConditionNodeKey.CONDITIONS);
+        conditions.forEach(condition -> {
+            conditionNodes.forEach(nodeList -> {
 
-            if (all(conditionList, conditions)) {
-                conditionIdList.add(getString(nodeMap, ConditionNodeKey.CONDITION_ID));
-            }
-        }
+                final Map<String, Object> nodeMap = getNodeMap(nodeList, ConditionNodeKey.NODE);
+                final List<Map<String, Object>> conditionList = getNodeList(nodeMap, ConditionNodeKey.CONDITIONS);
+
+                if (all(conditionList, condition)) {
+                    conditionIdList.add(getString(nodeMap, ConditionNodeKey.CONDITION_ID));
+                }
+            });
+        });
 
         return conditionIdList;
+
     }
 
     /**
      * Tests the conditions defined in the content against those passed to
-     * {@link #load(String, List, Map)} and determine if all conditions are met.
+     * {@link #load(InputStream, Set, List)} and determine if all conditions are
+     * met.
      *
      * @param contentConditionList The List of conditions defined in the content
      * @param conditions           The conditional map to use when matching
