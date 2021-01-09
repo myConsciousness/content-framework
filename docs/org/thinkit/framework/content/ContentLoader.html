@@ -86,13 +86,13 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
  specified content definition.
  <p>
  It provides a <a href="#load(java.io.InputStream,java.util.Set)"><code>load(InputStream, Set)</code></a> method to load content data
- without conditions, and a <a href="#load(java.io.InputStream,java.util.Set,java.util.Map)"><code>load(InputStream, Set, Map)</code></a> method to load
- content data with conditions.
+ without conditions, and a <a href="#load(java.io.InputStream,java.util.Set,java.util.List)"><code>load(InputStream, Set, List)</code></a> method to
+ load content data with conditions.
  <p>
  If the value of <code>"conditionId"</code> defined in the content is an empty
  string, the record will be loaded unconditionally. If you have defined a
  value for the conditionId of the content, be sure to define a condition for
- the content and call <a href="#load(java.io.InputStream,java.util.Set,java.util.Map)"><code>load(InputStream, Set, Map)</code></a>.
+ the content and call <a href="#load(java.io.InputStream,java.util.Set,java.util.List)"><code>load(InputStream, Set, List)</code></a>.
 
  <pre>
  If the condition is not specified:
@@ -137,9 +137,9 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code>static <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&gt;</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#load(java.io.InputStream,java.util.Set,java.util.Map)">load</a></span>&#8203;(@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/InputStream.html" title="java.io内のクラスまたはインタフェース" class="external-link">InputStream</a>&nbsp;contentStream,
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#load(java.io.InputStream,java.util.Set,java.util.List)">load</a></span>&#8203;(@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/InputStream.html" title="java.io内のクラスまたはインタフェース" class="external-link">InputStream</a>&nbsp;contentStream,
 @NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Set.html" title="java.util内のクラスまたはインタフェース" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&nbsp;attributes,
-@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&nbsp;conditions)</code></th>
+@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&gt;&nbsp;conditions)</code></th>
 <td class="col-last">
 <div class="block">Gets each element defined in the content file specified and return it as a
  list.</div>
@@ -193,18 +193,18 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 </section>
 </li>
 <li>
-<section class="detail" id="load(java.io.InputStream,java.util.Set,java.util.Map)">
+<section class="detail" id="load(java.io.InputStream,java.util.Set,java.util.List)">
 <h3>load</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&gt;</span>&nbsp;<span class="member-name">load</span>&#8203;(<span class="parameters">@NonNull
 @NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/InputStream.html" title="java.io内のクラスまたはインタフェース" class="external-link">InputStream</a>&nbsp;contentStream,
 @NonNull
 @NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Set.html" title="java.util内のクラスまたはインタフェース" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&nbsp;attributes,
 @NonNull
-@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&nbsp;conditions)</span></div>
+@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Map.html" title="java.util内のクラスまたはインタフェース" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;&gt;&nbsp;conditions)</span></div>
 <div class="block">Gets each element defined in the content file specified and return it as a
  list.
  <p>
- Use this <a href="#load(java.io.InputStream,java.util.Set,java.util.Map)"><code>load(InputStream, Set, Map)</code></a> method if there
+ Use this <a href="#load(java.io.InputStream,java.util.Set,java.util.List)"><code>load(InputStream, Set, List)</code></a> method if there
  are no acquisition conditions in the content definition.
 
  <pre>
@@ -215,7 +215,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 <dt>パラメータ:</dt>
 <dd><code>contentStream</code> - The stream of content file</dd>
 <dd><code>attributes</code> - The Attribute names to be acquired</dd>
-<dd><code>conditions</code> - The conditional map to use when getting data from the
+<dd><code>conditions</code> - The conditional list to use when getting data from the
                       content file</dd>
 <dt>戻り値:</dt>
 <dd>The List containing the elements retrieved from the content file</dd>
