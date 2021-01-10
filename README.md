@@ -1,5 +1,5 @@
 ![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
-![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.5-27ae60.svg?style=for-the-badge)
+![Latest Version](https://img.shields.io/badge/Latest_Version-v1.1.0-27ae60.svg?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
 ![Java CI with Gradle](https://github.com/myConsciousness/content-framework/workflows/Java%20CI%20with%20Gradle/badge.svg)
 
@@ -7,6 +7,7 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [What is it?](#what-is-it)
@@ -50,7 +51,7 @@ As a framework each procedure is designed to be easy to perform, and the impleme
 <dependency>
   <groupId>org.thinkit.framework.content</groupId>
   <artifactId>content-framework</artifactId>
-  <version>v1.0.5</version>
+  <version>v1.1.0</version>
 </dependency>
 
 <servers>
@@ -77,7 +78,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.framework.content:content-framework:v1.0.5'
+    implementation 'org.thinkit.framework.content:content-framework:v1.1.0'
 }
 ```
 
